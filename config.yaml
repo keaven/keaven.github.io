@@ -1,0 +1,52 @@
+baseurl: /
+languageCode: en-us
+title: Keaven M. Anderson
+theme: hugo-lithium
+googleAnalytics: ''
+disqusShortname: ''
+ignoreFiles:
+  - \.Rmd$
+  - \.Rmarkdown$
+  - _cache$
+  - \.knit\.md$
+  - \.utf8\.md$
+permalinks:
+  post: /:year/:month/:day/:slug/
+menu:
+  main:
+    - name: Publications
+      url: /publications/
+      weight: 1
+    - name: Software
+      url: /software/
+      weight: 2
+    - name: Talks
+      url: /talks/
+      weight: 3
+    - name: GitHub
+      url: https://github.com/keaven
+      weight: 4
+    - name: LinkedIn
+      url: https://www.linkedin.com/in/keaven-anderson-09aa7538/
+      weight: 5
+params:
+  MathJaxCDN: //cdnjs.cloudflare.com/ajax/libs
+  MathJaxVersion: 2.7.5
+  description: Personal website of Keaven M. Anderson
+  favicon: favicon.ico
+  highlightjsCDN: //cdnjs.cloudflare.com/ajax/libs
+  highlightjsLang:
+    - r
+    - yaml
+  highlightjsTheme: github
+  highlightjsVersion: 9.12.0
+  logo:
+    alt: Logo
+    height: 50
+    url: logo.png
+    width: 50
+markup:
+  defaultMarkdownHandler: goldmark
+  goldmark:
+    renderer:
+      unsafe: yes
