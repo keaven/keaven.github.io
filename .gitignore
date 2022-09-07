@@ -3,4 +3,7 @@
 .RData
 .Ruserdata
 
+renv/
+
 .hugo_build.lock
+public/
