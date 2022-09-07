@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Keaven M. Anderson</title>
+    <link>/</link>
+    <description>Recent content on Keaven M. Anderson</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Publications</title>
+      <link>/publications/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/</guid>
+      <description>(Under construction)
+1999 Antman, E. M., Giugliano, R. P., Gibson, C. M., McCabe, C. H., Coussement, P., Kleiman, N. S., Vahanian, A., Adgey, A. J., Menown, I., Rupprecht, H.-J., et al. (1999). Abciximab facilitates the rate and extent of thrombolysis: Results of the thrombolysis in myocardial infarction (TIMI) 14 trial. Circulation, 99(21), 2720–2732. 1997 Capture Investigators and others. (1997). Randomized placebo-controlled trial of abciximab before and during coronary intervention in refractory angina: The CAPTURE study.</description>
+    </item>
+    
+    <item>
+      <title>Software</title>
+      <link>/software/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/software/</guid>
+      <description>gsDesign: group sequential design
+CRAN | GitHub | Documentation
+gsDesign Explorer: group sequential design web interface
+rinpharma mirror | gsdesign mirror | Documentation
+gsDesign2: group sequential design under non-proportional hazards
+GitHub | Documentation
+gsdmvn: group sequential design with non-constant effect
+GitHub | Documentation
+simtrial: clinical trial simulation
+GitHub | Documentation
+gMCPLite: lightweight graph-based multiple comparison procedures
+CRAN | GitHub | Documentation
+pkglite: compact package representations
+CRAN | GitHub | Documentation</description>
+    </item>
+    
+    <item>
+      <title>Talks</title>
+      <link>/talks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/</guid>
+      <description> 2022 Grammar of Group Sequential Design. The 12th International Conference on Multiple Comparison Procedures, Bremen, Germany. Grammar of Group Sequential Design. Joint Statistical Meetings, Washington, DC. 2021 Group Sequential Design Under Non-Proportional Hazards (short course, slides). The 77th Annual Deming Conference on Applied Statistics. R for Clinical Study Reports and Submission (workshop, slides). R/Pharma Conference. </description>
+    </item>
+    
+  </channel>
+</rss>
