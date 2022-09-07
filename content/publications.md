@@ -4,6 +4,32 @@ title: Publications
 
 (Under construction)
 
+## Recent
+
+Mukhopadhyay, P., Ye, J., Anderson, K. M., Roychoudhury, S., Rubin, E. H., Halabi, S., & Chappell, R. J. (2022). Log-Rank Test vs MaxCombo and Difference in Restricted Mean Survival Time Tests for Comparing Survival Under Nonproportional Hazards in Immuno-oncology Trials: A Systematic Review and Meta-analysis. JAMA oncology.
+
+Anderson, K. M., Guo, Z., Zhao, J., & Sun, L. Z. (2022). A unified framework for weighted parametric group sequential design. Biometrical Journal.
+
+Chen, T. Y., Zhao, J., Sun, L., & Anderson, K. M. (2021). Multiplicity for a group sequential trial with biomarker subpopulations. Contemporary Clinical Trials, 101, 106249.
+
+Bautista, O., & Anderson, K. (2021). Sample Size Estimation and Power Analysis: Time to Event Data. In Handbook of Statistical Methods for Randomized Controlled Trials (pp. 275-300). Chapman and Hall/CRC.
+
+Roychoudhury, S., Anderson, K. M., Ye, J., & Mukhopadhyay, P. (2021). Robust design and analysis of clinical trials with nonproportional hazards: a straw man guidance from a cross-pharma working group. Statistics in Biopharmaceutical Research, 1-15.
+
+Lin, R. S., Lin, J., Roychoudhury, S., Anderson, K. M., Hu, T., Huang, B., ... & Working, C. P. N. P. H. (2020). Rejoinder to letter to the editor “The hazards of period specific and weighted hazard ratios”. Statistics in Biopharmaceutical Research, 12(4), 520.
+
+Lin, R. S., Lin, J., Roychoudhury, S., Anderson, K. M., Hu, T., Huang, B., ... & Cross-Pharma Non-Proportional Hazards Working Group. (2020). Alternative analysis methods for time to event endpoints under nonproportional hazards: a comparative analysis. Statistics in Biopharmaceutical Research, 12(2), 187-198.
+
+Tian, L., Jin, H., Uno, H., Lu, Y., Huang, B., Anderson, K. M., & Wei, L. J. (2020). On the empirical choice of the time window for restricted mean survival time. Biometrics, 76(4), 1157-1166.
+
+León, L. F., Lin, R., & Anderson, K. M. (2020). On weighted log-rank combination tests and companion Cox model estimators. Statistics in Biosciences, 12(2), 225-245.
+
+Turner, D. C., Kondic, A. G., Anderson, K. M., Robinson, A. G., Garon, E. B., Riess, J. W., ... & Stone, J. A. (2018). Pembrolizumab Exposure–Response Assessments Challenged by Association of Cancer Cachexia and Catabolic ClearancePembrolizumab PK/PD Confounding and Cancer Cachexia. Clinical Cancer Research, 24(23), 5841-5849.
+
+Joseph, Richard W., et al. "Baseline Tumor Size Is an Independent Prognostic Factor for Overall Survival in Patients with Melanoma Treated with Pembrolizumab: Impact of Baseline Tumor Size on Outcomes in Melanoma." *Clinical Cancer Research* *24.20* (2018): 4960-4967.
+
+Chen, Cong, et al. "A 2-in-1 adaptive phase 2/3 design for expedited oncology drug development." Contemporary clinical trials 64 (2018): 238-242.
+
 ## 1999
 
 - Antman, E. M., Giugliano, R. P., Gibson, C. M., McCabe, C. H.,
@@ -14,12 +40,12 @@ infarction (TIMI) 14 trial. *Circulation*, *99*(21), 2720–2732.
 
 ## 1997
 
-- Capture Investigators and others. (1997). Randomized
+- CAPTURE Investigators and others. (1997). Randomized
 placebo-controlled trial of abciximab before and during coronary
 intervention in refractory angina: The CAPTURE study. *Lancet*, *349*,
 1429–1435.
 
-- Epilog Investigators. (1997). Platelet glycoprotein IIb/IIIa
+- EPILOG Investigators. (1997). Platelet glycoprotein IIb/IIIa
 receptor blockade and low-dose heparin during percutaneous coronary
 revascularization. *New England Journal of Medicine*, *336*(24),
 1689–1697.
@@ -33,7 +59,7 @@ blockade with percutaneous coronary intervention. *JAMA*, *278*(6),
 
 ## 1994
 
-- Epic Investigators. (1994). Use of a monoclonal antibody directed
+- EPIC Investigators. (1994). Use of a monoclonal antibody directed
 against the platelet glycoprotein IIb/IIIa receptor in high-risk
 coronary angioplasty. *New England Journal of Medicine*, *330*(14),
 956–961.
