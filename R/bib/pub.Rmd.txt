@@ -1,0 +1,26 @@
+---
+output: md_document
+bibliography: keaven.bib
+csl: apa-numeric-superscript-brackets.csl
+---
+
+@antman1999abciximab
+@capture1997randomized
+@epilog1997platelet
+@topol1997long
+@epic1994use
+@topol1994randomised
+@ho1993survival
+@castelli1992lipids
+@anderson1991cardiovascular
+@anderson1991updated
+@galderisi1991echocardiographic
+@lauer1991impact
+@d1990relation
+@levy1990determinants
+@levy1990prognostic
+@levy1988echocardiographically
+@anderson1987cholesterol
+@levy1987echocardiographic
+@levy1987risk
+@castelli1986population

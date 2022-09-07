@@ -1,0 +1,48 @@
+---
+title: Software
+---
+
+<style>
+ul { padding-inline-start: 0px; list-style-type: none; }
+.article-content p { margin-top: 5px; margin-bottom: 5px; }
+li { margin-bottom: 30px; }
+</style>
+
+- **gsDesign**: group sequential design
+
+  [CRAN](https://cran.r-project.org/package=gsDesign) |
+  [GitHub](https://github.com/keaven/gsDesign) |
+  [Documentation](https://keaven.github.io/gsDesign/)
+
+- **gsDesign Explorer**: group sequential design web interface
+
+  [rinpharma mirror](https://rinpharma.shinyapps.io/gsdesign/) |
+  [gsdesign mirror](https://gsdesign.shinyapps.io/prod/) |
+  [Documentation](https://keaven.github.io/gsd-shiny/)
+
+- **gsDesign2**: group sequential design under non-proportional hazards
+
+  [GitHub](https://github.com/merck/gsDesign2) |
+  [Documentation](https://merck.github.io/gsDesign2/)
+
+- **gsdmvn**: group sequential design with non-constant effect
+
+  [GitHub](https://github.com/merck/gsdmvn) |
+  [Documentation](https://merck.github.io/gsdmvn/)
+
+- **simtrial**: clinical trial simulation
+
+  [GitHub](https://github.com/merck/simtrial) |
+  [Documentation](https://merck.github.io/simtrial/)
+
+- **gMCPLite**: lightweight graph-based multiple comparison procedures
+
+  [CRAN](https://cran.r-project.org/package=gMCPLite) |
+  [GitHub](https://github.com/Merck/gMCPLite) |
+  [Documentation](https://merck.github.io/gMCPLite/)
+
+- **pkglite**: compact package representations
+
+  [CRAN](https://cran.r-project.org/package=pkglite) |
+  [GitHub](https://github.com/Merck/pkglite) |
+  [Documentation](https://merck.github.io/pkglite/)
