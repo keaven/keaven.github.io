@@ -18,6 +18,15 @@ Anderson, K. M., Guo, Z., Zhao, J., &amp;amp; Sun, L. Z. (2022). A unified frame
     </item>
     
     <item>
+      <title>Selected talks</title>
+      <link>/talks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/</guid>
+      <description> 2022 Grammar of Group Sequential Design The 12th International Conference on Multiple Comparison Procedures, Bremen, Germany. Joint Statistical Meetings, Washington, DC. 2021 Group Sequential Design Under Non-Proportional Hazards (short course, slides). The 77th Annual Deming Conference on Applied Statistics. R for Clinical Study Reports and Submission (workshop, slides). R/Pharma Conference. </description>
+    </item>
+    
+    <item>
       <title>Software</title>
       <link>/software/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -37,15 +46,6 @@ gMCPLite: lightweight graph-based multiple comparison procedures
 CRAN | GitHub | Documentation
 pkglite: compact package representations
 CRAN | GitHub | Documentation</description>
-    </item>
-    
-    <item>
-      <title>Talks</title>
-      <link>/talks/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/talks/</guid>
-      <description> 2022 Grammar of Group Sequential Design The 12th International Conference on Multiple Comparison Procedures, Bremen, Germany. Joint Statistical Meetings, Washington, DC. 2021 Group Sequential Design Under Non-Proportional Hazards (short course, slides). The 77th Annual Deming Conference on Applied Statistics. R for Clinical Study Reports and Submission (workshop, slides). R/Pharma Conference. </description>
     </item>
     
   </channel>
