@@ -1,5 +1,5 @@
 ---
-title: Talks
+title: Selected talks
 ---
 
 <style>
