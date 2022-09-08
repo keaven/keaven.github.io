@@ -9,10 +9,9 @@ li { margin-bottom: 25px; }
 
 ## 2022
 
-- [Grammar of Group Sequential Design](#).
-  The 12th International Conference on Multiple Comparison Procedures, Bremen, Germany.
-- [Grammar of Group Sequential Design](#).
-  Joint Statistical Meetings, Washington, DC.
+- [Grammar of Group Sequential Design](/talks/grammar-of-gsd-bremen/)
+  - The 12th International Conference on Multiple Comparison Procedures, Bremen, Germany. 
+  - Joint Statistical Meetings, Washington, DC.
 
 ## 2021
 
