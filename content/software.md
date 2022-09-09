@@ -5,7 +5,7 @@ title: Software
 <style>
 ul { padding-inline-start: 0px; list-style-type: none; }
 .article-content p { margin-top: 5px; margin-bottom: 5px; }
-li { margin-bottom: 30px; }
+.article-content > ul > li { margin-bottom: 30px; }
 </style>
 
 - **gsDesign**: group sequential design
