@@ -1,0 +1,103 @@
+---
+title: Publications
+---
+
+<!-- After the .bib file is updated, knit this Rmd to update publications.html, then commit and push both the .bib and .html -->
+
+(Under construction)
+
+## Recent
+
+Mukhopadhyay, P., Ye, J., Anderson, K. M., Roychoudhury, S., Rubin, E. H., Halabi, S., & Chappell, R. J. (2022). Log-Rank Test vs MaxCombo and Difference in Restricted Mean Survival Time Tests for Comparing Survival Under Nonproportional Hazards in Immuno-oncology Trials: A Systematic Review and Meta-analysis. JAMA oncology.
+
+Anderson, K. M., Guo, Z., Zhao, J., & Sun, L. Z. (2022). A unified framework for weighted parametric group sequential design. Biometrical Journal.
+
+Chen, T. Y., Zhao, J., Sun, L., & Anderson, K. M. (2021). Multiplicity for a group sequential trial with biomarker subpopulations. Contemporary Clinical Trials, 101, 106249.
+
+Bautista, O., & Anderson, K. (2021). Sample Size Estimation and Power Analysis: Time to Event Data. In Handbook of Statistical Methods for Randomized Controlled Trials (pp. 275-300). Chapman and Hall/CRC.
+
+Roychoudhury, S., Anderson, K. M., Ye, J., & Mukhopadhyay, P. (2021). Robust design and analysis of clinical trials with nonproportional hazards: a straw man guidance from a cross-pharma working group. Statistics in Biopharmaceutical Research, 1-15.
+
+Lin, R. S., Lin, J., Roychoudhury, S., Anderson, K. M., Hu, T., Huang, B., ... & Working, C. P. N. P. H. (2020). Rejoinder to letter to the editor “The hazards of period specific and weighted hazard ratios”. Statistics in Biopharmaceutical Research, 12(4), 520.
+
+Lin, R. S., Lin, J., Roychoudhury, S., Anderson, K. M., Hu, T., Huang, B., ... & Cross-Pharma Non-Proportional Hazards Working Group. (2020). Alternative analysis methods for time to event endpoints under nonproportional hazards: a comparative analysis. Statistics in Biopharmaceutical Research, 12(2), 187-198.
+
+Tian, L., Jin, H., Uno, H., Lu, Y., Huang, B., Anderson, K. M., & Wei, L. J. (2020). On the empirical choice of the time window for restricted mean survival time. Biometrics, 76(4), 1157-1166.
+
+León, L. F., Lin, R., & Anderson, K. M. (2020). On weighted log-rank combination tests and companion Cox model estimators. Statistics in Biosciences, 12(2), 225-245.
+
+Turner, D. C., Kondic, A. G., Anderson, K. M., Robinson, A. G., Garon, E. B., Riess, J. W., ... & Stone, J. A. (2018). Pembrolizumab Exposure–Response Assessments Challenged by Association of Cancer Cachexia and Catabolic ClearancePembrolizumab PK/PD Confounding and Cancer Cachexia. Clinical Cancer Research, 24(23), 5841-5849.
+
+Joseph, Richard W., et al. "Baseline Tumor Size Is an Independent Prognostic Factor for Overall Survival in Patients with Melanoma Treated with Pembrolizumab: Impact of Baseline Tumor Size on Outcomes in Melanoma." *Clinical Cancer Research* *24.20* (2018): 4960-4967.
+
+Chen, Cong, et al. "A 2-in-1 adaptive phase 2/3 design for expedited oncology drug development." Contemporary clinical trials 64 (2018): 238-242.
+
+```{r, include=FALSE}
+df <- bib2df::bib2df("keaven.bib") |> suppressWarnings()
+df <- df[order(df$YEAR, decreasing = TRUE), ]
+
+# Copy the assets into a temporary directory to render
+create_tempdir <- function(name) {
+  path <- file.path(tempdir(), name)
+  if (dir.exists(path)) unlink(path, recursive = TRUE)
+  dir.create(path)
+  invisible(path)
+}
+
+path_dir <- create_tempdir("pub")
+path_rmd <- file.path(path_dir, "pub.Rmd")
+path_md <- file.path(path_dir, "pub.md")
+file.copy(from = "keaven.bib", to = path_dir, overwrite = TRUE) |> invisible()
+file.copy(from = "apa-numeric-superscript-brackets.csl", to = path_dir, overwrite = TRUE) |> invisible()
+
+c(
+  "---",
+  "output: md_document",
+  "bibliography: keaven.bib",
+  "csl: apa-numeric-superscript-brackets.csl",
+  "---",
+  "",
+  paste0("@", df$BIBTEXKEY)
+) |>
+  writeLines(con = path_rmd)
+
+withr::with_dir(
+  path_dir,
+  rmarkdown::render(path_rmd, output_file = path_md)
+)
+
+# Remove the reference anchors
+md_text <- path_md |>
+  readLines() |>
+  gsub("^<sup>.*</sup>", "", x = _) |>
+  gsub("^\\d+\\\\\\.\\s", "- ", x = _)
+
+# Remove the remaining blank lines at top
+md_text <- md_text[-(1L:(which(md_text != "")[1] - 2L))]
+
+# Tag the first article of that year with year headings
+idx_year <- which(md_text == "")
+v <- cumsum(rle(df$YEAR)$lengths) + 1L
+idx_first_year <- c(1L, v[-length(v)])
+md_text[idx_year[idx_first_year]] <- paste0("## ", df$YEAR[idx_first_year])
+
+# Add blank line around year headings
+# <https://stackoverflow.com/a/18951302>
+insert_at <- function(x, pos, lst) {
+  stopifnot(length(lst) == length(pos))
+  res <- vector("list", 2 * length(pos) + 1)
+  res[c(TRUE, FALSE)] <- split(x, cumsum(seq_along(x) %in% (pos + 1)))
+  res[c(FALSE, TRUE)] <- lst
+  unlist(res)
+}
+
+md_text <- md_text |>
+  insert_at(
+    c(idx_year[idx_first_year] - 1L, idx_year[idx_first_year])[-1],
+    as.list(rep("", length(idx_first_year) * 2 - 1))
+  )
+```
+
+```{r, echo=FALSE, results="asis"}
+cat(paste0(md_text, collapse = "\n"))
+```
