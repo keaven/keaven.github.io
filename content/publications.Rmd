@@ -6,6 +6,8 @@ title: Publications
 
 (Under construction)
 
+[Google Scholar curated citations](https://scholar.google.com/citations?user=P5Rt1VEAAAAJ&hl=en)
+
 ## Recent
 
 Mukhopadhyay, P., Ye, J., Anderson, K. M., Roychoudhury, S., Rubin, E. H., Halabi, S., & Chappell, R. J. (2022). Log-Rank Test vs MaxCombo and Difference in Restricted Mean Survival Time Tests for Comparing Survival Under Nonproportional Hazards in Immuno-oncology Trials: A Systematic Review and Meta-analysis. JAMA oncology.
