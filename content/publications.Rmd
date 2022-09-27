@@ -4,9 +4,21 @@ title: Publications
 
 <!-- After the .bib file is updated, knit this Rmd to update publications.html, then commit and push both the .bib and .html -->
 
-[Google Scholar curated citations](https://scholar.google.com/citations?user=P5Rt1VEAAAAJ&hl=en)
+[Google Scholar profile](https://scholar.google.com/citations?user=P5Rt1VEAAAAJ&hl=en) | [Download BibTeX file](https://keaven.github.io/keaven.bib)
 
-[Download BibTeX file](https://keaven.github.io/keaven.bib)
+![](/images/wordcloud.png)
+
+[2022](#year2022) | [2021](#year2021) | [2020](#year2020) |
+[2018](#year2018) | [2016](#year2016) | [2015](#year2015) |
+[2014](#year2014) | [2012](#year2012) | [2011](#year2011) |
+[2010](#year2010) | [2009](#year2009) | [2008](#year2008) | [2007](#year2007) |
+[2006](#year2006) | [2004](#year2004) | [2003](#year2003) |
+[2002](#year2002) | [2001](#year2001) | [2000](#year2000) | [1999](#year1999) |
+[1998](#year1998) | [1997](#year1997) | [1996](#year1996) | [1995](#year1995) |
+[1994](#year1994) | [1993](#year1993) | [1992](#year1992) | [1991](#year1991) |
+[1990](#year1990) | [1989](#year1989) | [1988](#year1988) | [1987](#year1987) |
+[1986](#year1986) | [1985](#year1985) | [1984](#year1984) | [1983](#year1983) |
+[1982](#year1982) | [1980](#year1980)
 
 ```{r, include=FALSE}
 df <- bib2df::bib2df("keaven.bib") |> suppressWarnings()
@@ -51,11 +63,14 @@ md_text <- path_md |>
 # Remove the remaining blank lines at top
 md_text <- md_text[-(1L:(which(md_text != "")[1] - 2L))]
 
-# Tag the first article of that year with year headings
+# Tag the first article of that year with year headings (with anchor)
 idx_year <- which(md_text == "")
 v <- cumsum(rle(df$YEAR)$lengths) + 1L
 idx_first_year <- c(1L, v[-length(v)])
-md_text[idx_year[idx_first_year]] <- paste0("## ", df$YEAR[idx_first_year])
+md_text[idx_year[idx_first_year]] <- paste0(
+  "## ", df$YEAR[idx_first_year],
+  " {#year", df$YEAR[idx_first_year], "}"
+)
 
 # Add blank line around year headings
 # <https://stackoverflow.com/a/18951302>
