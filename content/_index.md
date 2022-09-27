@@ -7,4 +7,5 @@ I have a long standing interest in Phase 3 design of clinical trials with partic
 R software is another major interest as shown in the software tab.
 Recent research focuses on testing multiple hypotheses in group sequential design as well as weighted rank-based tests for comparing survival curves.
 
-
+![A visualization of my co-authorship network.](/images/coauthors.png)
+<p class="caption" style="text-align: center;">A visualization of my co-authorship network.</p>
