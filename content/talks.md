@@ -9,6 +9,8 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 
 ## 2022
 
+- [Some industry trials over the last 30 years: personal experience and challenges](/talks/industry-trials-30-years-biop/)
+  - 2022 ASA Biopharmaceutical Section Regulatory-Industry Statistics Workshop, Rockville, MD.
 - [Grammar of Group Sequential Design](/talks/grammar-of-gsd-bremen/)
   - MCP Conference 2022: The 12th International Conference on Multiple Comparison Procedures, Bremen, Germany.
   - Joint Statistical Meetings, Washington, DC.
