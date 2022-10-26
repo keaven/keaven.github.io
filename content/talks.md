@@ -13,7 +13,7 @@ ul { padding-inline-start: 0px; list-style-type: none; }
   - 2022 ASA Biopharmaceutical Section Regulatory-Industry Statistics Workshop, Rockville, MD.
 - [Grammar of Group Sequential Design](/talks/grammar-of-gsd-bremen/)
   - MCP Conference 2022: The 12th International Conference on Multiple Comparison Procedures, Bremen, Germany.
-  - Joint Statistical Meetings, Washington, DC.
+  - Joint Statistical Meetings, Washington, DC. ([recording](https://youtu.be/8s6puf2OPeQ))
 
 ## 2021
 
@@ -22,4 +22,11 @@ ul { padding-inline-start: 0px; list-style-type: none; }
   - The 77th Annual Deming Conference on Applied Statistics.
 - [R for Clinical Study Reports and Submission](https://r4csr.org/)
   (workshop, [slides](https://r4csr.org/slides/workshop-slides.html)).
+  - R/Pharma Conference.
+- [The gsDesign Shiny app for clinical trial design](https://rinpharma.com/publication/rinpharma_247/) (talk)
+  - R/Pharma Conference.
+
+## 2019
+
+- [Teaching an old dog new tricks: modernizing gsDesign](https://rinpharma.com/publication/rinpharma_73/)
   - R/Pharma Conference.
