@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Keaven M. Anderson</title>
+    <link>/blog/</link>
+    <description>Recent content in Blogs on Keaven M. Anderson</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 17 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>gsDesign 3.6.0</title>
+      <link>/blog/gsdesign-3-6-0/</link>
+      <pubDate>Fri, 17 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>/blog/gsdesign-3-6-0/</guid>
+      <description>We are thrilled to announce the release of gsDesign 3.6.0. gsDesign makes it easy to create group sequential clinical trial designs in R. gsDesign also offers a web interface to enable both design creation/updates without coding and code generation to reproduce the design.
+You can install gsDesign from CRAN with:
+install.packages(&amp;quot;gsDesign&amp;quot;) What’s new in gsDesign 3.6.0 Time-to-event endpoint design with calendar timing of analyses We added a gsSurvCalendar() function to enable group sequential design for time-to-event outcomes using calendar specification of interim analysis timing.</description>
+    </item>
+  </channel>
+</rss>
