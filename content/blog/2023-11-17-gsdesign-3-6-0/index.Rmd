@@ -3,11 +3,9 @@ title: "gsDesign 3.6.0"
 author: "Keaven Anderson"
 date: "2023-11-17"
 slug: "gsdesign-3-6-0"
-categories:
-  - gsDesign
 tags:
   - gsDesign
-output: html_document
+  - gsDesignShiny
 ---
 
 ```{r setup, include=FALSE}
@@ -30,9 +28,9 @@ install.packages("gsDesign")
 
 ### Time-to-event endpoint design with calendar timing of analyses
 
-[`gsSurvCalendar()`](https://keaven.github.io/gsDesign/reference/gsSurvCalendar.html)
-function added to enable group sequential design for time-to-event outcomes
-using calendar specification of interim analysis timing. 
+We added a [`gsSurvCalendar()`](https://keaven.github.io/gsDesign/reference/gsSurvCalendar.html)
+function to enable group sequential design for time-to-event outcomes
+using calendar specification of interim analysis timing.
 These designs can use either information- or calendar-based spending with latter
 focused on trials where the priority may be on finishing in a fixed time
 rather than a fixed number of endpoints.
@@ -42,7 +40,8 @@ rather than a fixed number of endpoints.
 [`toInteger()`](https://keaven.github.io/gsDesign/reference/toInteger.html):
 Fixed the documentation and execution based on the `ratio` argument.
 
-`print.gsSurv()`: Improve the display of targeted events (very minor).
+[`print.gsSurv()`](https://keaven.github.io/gsDesign/reference/nSurv.html):
+Improve the display of targeted events (very minor).
 The boundary crossing probability computations did not change.
 The need for this was made evident by the addition of the `toInteger()` function.
 
@@ -52,10 +51,11 @@ The need for this was made evident by the addition of the `toInteger()` function
 [`gsBinomialExact()`](https://keaven.github.io/gsDesign/reference/gsBinomialExact.html):
 fixed error checking in bound computations, improved documentation and error messages.
 
-Breaking change: `gsSurv()` and `nSurv()` have updated default values for
-`T` and `minfup` so that function calls with no arguments will run.
+Breaking change: [`gsSurv()` and `nSurv()`](https://keaven.github.io/gsDesign/reference/nSurv.html)
+have updated default values for `T` and `minfup` so that function calls
+with no arguments will run.
 Legacy code with `T` or `minfup` not explicitly specified could break;
-this was consider unlikely to be common and the new defaults offer some convenience.
+this was considered unlikely to be common and the new defaults offer some convenience.
 
 ### Other improvements
 
@@ -65,11 +65,9 @@ These vignettes were updated:
 - [Poisson mixture model](https://keaven.github.io/gsDesign/articles/PoissonMixtureModel.html).
 - [Integer sample size and event counts](https://keaven.github.io/gsDesign/articles/toInteger.html).
 
-[`as_rtf()`](https://keaven.github.io/gsDesign/reference/as_rtf.html)
-method for `gsBinomialExact()` objects added,
+We added an [`as_rtf()`](https://keaven.github.io/gsDesign/reference/as_rtf.html)
+method for `gsBinomialExact` objects,
 enabling RTF table outputs for standard word processing software.
-
-Standardize and improve roxygen2 documentation.
 
 For more details about the updates in gsDesign 3.6.0, see the
 [changelog](https://keaven.github.io/gsDesign/news/).
@@ -94,7 +92,9 @@ To change this behavior:
 2. Switch off **Enable integer sample size and event counts**.
 3. Click **Save Settings**.
 
-[Insert screenshot]
+```{r, echo=FALSE}
+knitr::include_graphics("images/to-integer.png")
+```
 
 The value of this new option will be saved when you save the design to
 the `.rds` file. For reproducibility, restoring previously saved designs
@@ -111,7 +111,9 @@ creating the design.
 2. In **Timing type**, select **Calendar-based**.
 3. Fill out the **Calendar timing increments**.
 
-[Insert screenshot]
+```{r, echo=FALSE}
+knitr::include_graphics("images/calendar-timing.png")
+```
 
 **Calendar-based spending**:
 
@@ -122,14 +124,16 @@ Note that these options will only show up when the endpoint type is
 time-to-event, and when the option under **Enrollment** is
 **Vary enrollment rate (Lachin-Foulkes)**.
 
-[Insert screenshot]
+```{r, echo=FALSE}
+knitr::include_graphics("images/calendar-spending.png")
+```
 
 ### UI and report template improvements
 
 We improved many theming details of specific UI elements in this release.
 For example, the **Restore Design** button now renders properly under Firefox.
 The padding of code blocks has been increased. The editing experience of
-matrix inputs is now better aligned with other numeric or select inputs.
+matrix inputs is now better aligned with numeric or select inputs.
 
 Last but not least, the R Markdown report templates now load ggplot2 explicitly.
 This is due to the dependency being moved from `Depends` to `Imports`
