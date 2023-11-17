@@ -179,6 +179,12 @@ p.tags a:focus {
   padding: 10px;
 }
 
+pre {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
 .archive {
   margin: 0;
   padding: 0;
