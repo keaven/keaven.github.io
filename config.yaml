@@ -11,24 +11,27 @@ ignoreFiles:
   - \.knit\.md$
   - \.utf8\.md$
 permalinks:
-  post: /:year/:month/:day/:slug/
+  blog: /blog/:slug/
 menu:
   main:
+    - name: Blog
+      url: /blog/
+      weight: 1
     - name: Publications
       url: /publications/
-      weight: 1
+      weight: 2
     - name: Software
       url: /software/
-      weight: 2
+      weight: 3
     - name: Talks
       url: /talks/
-      weight: 3
+      weight: 4
     - name: GitHub
       url: https://github.com/keaven
-      weight: 4
+      weight: 5
     - name: LinkedIn
       url: https://www.linkedin.com/in/keaven-anderson-09aa7538/
-      weight: 5
+      weight: 6
 params:
   MathJaxCDN: //cdnjs.cloudflare.com/ajax/libs
   MathJaxVersion: 2.7.5
