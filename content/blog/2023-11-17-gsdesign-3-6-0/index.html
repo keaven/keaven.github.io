@@ -1,0 +1,120 @@
+---
+title: "gsDesign 3.6.0"
+author: "Keaven Anderson"
+date: "2023-11-17"
+slug: "gsdesign-3-6-0"
+tags:
+  - gsDesign
+  - gsDesignShiny
+---
+
+
+
+<p>We are thrilled to announce the release of <a href="https://keaven.github.io/gsDesign/">gsDesign</a> 3.6.0.
+gsDesign makes it easy to create group sequential clinical trial designs in R.
+gsDesign also offers a <a href="https://rinpharma.shinyapps.io/gsdesign/">web interface</a>
+to enable both design creation/updates without coding and code generation
+to reproduce the design.</p>
+<p>You can install gsDesign from CRAN with:</p>
+<pre class="r"><code>install.packages(&quot;gsDesign&quot;)</code></pre>
+<div id="whats-new-in-gsdesign-3.6.0" class="section level2">
+<h2>What’s new in gsDesign 3.6.0</h2>
+<div id="time-to-event-endpoint-design-with-calendar-timing-of-analyses" class="section level3">
+<h3>Time-to-event endpoint design with calendar timing of analyses</h3>
+<p>We added a <a href="https://keaven.github.io/gsDesign/reference/gsSurvCalendar.html"><code>gsSurvCalendar()</code></a>
+function to enable group sequential design for time-to-event outcomes
+using calendar specification of interim analysis timing.
+These designs can use either information- or calendar-based spending with latter
+focused on trials where the priority may be on finishing in a fixed time
+rather than a fixed number of endpoints.</p>
+</div>
+<div id="integer-sample-size-and-event-count" class="section level3">
+<h3>Integer sample size and event count</h3>
+<p><a href="https://keaven.github.io/gsDesign/reference/toInteger.html"><code>toInteger()</code></a>:
+Fixed the documentation and execution based on the <code>ratio</code> argument.</p>
+<p><a href="https://keaven.github.io/gsDesign/reference/nSurv.html"><code>print.gsSurv()</code></a>:
+Improve the display of targeted events (very minor).
+The boundary crossing probability computations did not change.
+The need for this was made evident by the addition of the <code>toInteger()</code> function.</p>
+</div>
+<div id="translate-survival-design-bounds-to-exact-binomial-bounds" class="section level3">
+<h3>Translate survival design bounds to exact binomial bounds</h3>
+<p><a href="https://keaven.github.io/gsDesign/reference/toBinomialExact.html"><code>toBinomialExact()</code></a> and
+<a href="https://keaven.github.io/gsDesign/reference/gsBinomialExact.html"><code>gsBinomialExact()</code></a>:
+fixed error checking in bound computations, improved documentation and error messages.</p>
+<p>Breaking change: <a href="https://keaven.github.io/gsDesign/reference/nSurv.html"><code>gsSurv()</code> and <code>nSurv()</code></a>
+have updated default values for <code>T</code> and <code>minfup</code> so that function calls
+with no arguments will run.
+Legacy code with <code>T</code> or <code>minfup</code> not explicitly specified could break;
+this was considered unlikely to be common and the new defaults offer some convenience.</p>
+</div>
+<div id="other-improvements" class="section level3">
+<h3>Other improvements</h3>
+<p>These vignettes were updated:</p>
+<ul>
+<li><a href="https://keaven.github.io/gsDesign/articles/VaccineEfficacy.html">Vaccine efficacy trial design</a>.</li>
+<li><a href="https://keaven.github.io/gsDesign/articles/PoissonMixtureModel.html">Poisson mixture model</a>.</li>
+<li><a href="https://keaven.github.io/gsDesign/articles/toInteger.html">Integer sample size and event counts</a>.</li>
+</ul>
+<p>We added an <a href="https://keaven.github.io/gsDesign/reference/as_rtf.html"><code>as_rtf()</code></a>
+method for <code>gsBinomialExact</code> objects,
+enabling RTF table outputs for standard word processing software.</p>
+<p>For more details about the updates in gsDesign 3.6.0, see the
+<a href="https://keaven.github.io/gsDesign/news/">changelog</a>.</p>
+</div>
+</div>
+<div id="gsdesign-shiny-app-2023.11.0" class="section level2">
+<h2>gsDesign Shiny app 2023.11.0</h2>
+<p>The <a href="https://rinpharma.shinyapps.io/gsdesign/">Shiny app for gsDesign</a>
+has been updated to 2023.11.0, working together with gsDesign 3.6.0.
+This version supports the new key features added in gsDesign 3.5.0 and 3.6.0.
+This update is also backward compatible, meaning restoring previously saved
+designs will work consistently.</p>
+<div id="integer-sample-size-and-event-count-1" class="section level3">
+<h3>Integer sample size and event count</h3>
+<p>The app now defaults to translating group sequential design to
+integer events (survival designs) or sample size
+(other designs except information-based designs).</p>
+<p>To change this behavior:</p>
+<ol style="list-style-type: decimal">
+<li>Click <strong>Global Options</strong> in the upper-right corner.</li>
+<li>Switch off <strong>Enable integer sample size and event counts</strong>.</li>
+<li>Click <strong>Save Settings</strong>.</li>
+</ol>
+<p><img src="images/to-integer.png" width="744" /></p>
+<p>The value of this new option will be saved when you save the design to
+the <code>.rds</code> file. For reproducibility, restoring previously saved designs
+will have this option switched off by default.</p>
+</div>
+<div id="calendar-based-timing-and-spending" class="section level3">
+<h3>Calendar-based timing and spending</h3>
+<p>New options have been added to allow calendar-based timing and spending when
+creating the design.</p>
+<p><strong>Calendar-based timing</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>Under the <strong>Design</strong> page, switch to the <strong>Timing</strong> tab.</li>
+<li>In <strong>Timing type</strong>, select <strong>Calendar-based</strong>.</li>
+<li>Fill out the <strong>Calendar timing increments</strong>.</li>
+</ol>
+<p><img src="images/calendar-timing.png" width="799" /></p>
+<p><strong>Calendar-based spending</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>Under the <strong>Design</strong> page, switch to the <strong>Boundaries</strong> tab.</li>
+<li>In <strong>Spending type</strong>, select <strong>Calendar-based</strong>.</li>
+</ol>
+<p>Note that these options will only show up when the endpoint type is
+time-to-event, and when the option under <strong>Enrollment</strong> is
+<strong>Vary enrollment rate (Lachin-Foulkes)</strong>.</p>
+<p><img src="images/calendar-spending.png" width="799" /></p>
+</div>
+<div id="ui-and-report-template-improvements" class="section level3">
+<h3>UI and report template improvements</h3>
+<p>We improved many theming details of specific UI elements in this release.
+For example, the <strong>Restore Design</strong> button now renders properly under Firefox.
+The padding of code blocks has been increased. The editing experience of
+matrix inputs is now better aligned with numeric or select inputs.</p>
+<p>Last but not least, the R Markdown report templates now load ggplot2 explicitly.
+This is due to the dependency being moved from <code>Depends</code> to <code>Imports</code>
+since gsDesign 3.4.0 (<a href="https://github.com/keaven/gsDesign/issues/56">#56</a>).</p>
+</div>
+</div>
