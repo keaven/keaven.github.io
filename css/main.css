@@ -183,8 +183,8 @@ p.tags a:focus {
 
 pre {
   padding: 0.5rem;
-  border: 1px solid #ccc;
   border-radius: 6px;
+  background-color: #f9f9f9;
 }
 
 .archive {
