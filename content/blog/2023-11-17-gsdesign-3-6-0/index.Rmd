@@ -12,6 +12,13 @@ tags:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{css, echo=FALSE}
+img {
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+}
+```
+
 We are thrilled to announce the release of [gsDesign](https://keaven.github.io/gsDesign/) 3.6.0.
 gsDesign makes it easy to create group sequential clinical trial designs in R.
 gsDesign also offers a [web interface](https://rinpharma.shinyapps.io/gsdesign/)
