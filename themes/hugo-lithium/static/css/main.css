@@ -19,6 +19,7 @@ h4,
 h5,
 h6 {
   color: #222;
+  font-weight: 600;
 }
 
 a {
@@ -119,13 +120,13 @@ img {
 }
 
 p.tags {
-  color: #ccc;
+  color: #6e6e73;
   margin-top: 0;
   margin-bottom: 0;
 }
 
 .article-date {
-  color: #ccc;
+  color: #6e6e73;
 }
 
 .article-duration {
@@ -133,17 +134,18 @@ p.tags {
   float: right;
   font-size: 10px;
   padding: 1px 5px;
-  font-weight: bold;
+  font-weight: 600;
   border-radius: 3px;
   background: #bbb;
-  color: #fff
+  color: #fff;
 }
 
 .article-content p {
   margin: 15px 0 25px;
 }
 
-.article-content a, p.tags a {
+.article-content a,
+p.tags a {
   text-decoration: none;
   color: inherit;
   border-bottom: 3px solid #CBF8DF;
@@ -216,7 +218,7 @@ pre {
   display: inline-block;
   text-decoration: none;
   font-size: 21px;
-  font-weight: bold;
+  font-weight: 600;
   color: #222;
   padding: 5px 0;
   border-bottom: 1px solid #ddd;
