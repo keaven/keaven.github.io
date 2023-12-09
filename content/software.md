@@ -22,16 +22,13 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 
 - **gsDesign2**: group sequential design under non-proportional hazards
 
+  [CRAN](https://cran.r-project.org/package=gsDesign2) |
   [GitHub](https://github.com/merck/gsDesign2) |
   [Documentation](https://merck.github.io/gsDesign2/)
 
-- **gsdmvn**: group sequential design with non-constant effect
-
-  [GitHub](https://github.com/merck/gsdmvn) |
-  [Documentation](https://merck.github.io/gsdmvn/)
-
 - **simtrial**: clinical trial simulation
 
+  [CRAN](https://cran.r-project.org/package=simtrial) |
   [GitHub](https://github.com/merck/simtrial) |
   [Documentation](https://merck.github.io/simtrial/)
 
@@ -41,8 +38,20 @@ ul { padding-inline-start: 0px; list-style-type: none; }
   [GitHub](https://github.com/Merck/gMCPLite) |
   [Documentation](https://merck.github.io/gMCPLite/)
 
+- **gMCPShiny**: Shiny app for graphical multiplicity control
+
+  [GitHub](https://github.com/Merck/gMCPShiny) |
+  [Documentation](https://merck.github.io/gMCPShiny/)
+
 - **pkglite**: compact package representations
 
   [CRAN](https://cran.r-project.org/package=pkglite) |
   [GitHub](https://github.com/Merck/pkglite) |
   [Documentation](https://merck.github.io/pkglite/)
+
+## Archived
+
+- **gsdmvn**: group sequential design with non-constant effect (merged into gsDesign2 as of June 2023)
+
+  [GitHub](https://github.com/merck/gsdmvn) |
+  [Documentation](https://merck.github.io/gsdmvn/)
