@@ -42,15 +42,14 @@ CRAN | GitHub | Documentation
 gsDesign Explorer: group sequential design web interface
 rinpharma mirror | gsdesign mirror | Documentation
 gsDesign2: group sequential design under non-proportional hazards
-GitHub | Documentation
-gsdmvn: group sequential design with non-constant effect
-GitHub | Documentation
+CRAN | GitHub | Documentation
 simtrial: clinical trial simulation
-GitHub | Documentation
+CRAN | GitHub | Documentation
 gMCPLite: lightweight graph-based multiple comparison procedures
 CRAN | GitHub | Documentation
-pkglite: compact package representations
-CRAN | GitHub | Documentation</description>
+gMCPShiny: Shiny app for graphical multiplicity control
+GitHub | Documentation
+pkglite: compact package representations</description>
     </item>
   </channel>
 </rss>
