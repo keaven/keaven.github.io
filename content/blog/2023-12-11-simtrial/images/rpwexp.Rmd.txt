@@ -1,0 +1,266 @@
+---
+title: "Generate piecewise Exponential random numbers"
+author: "Jianxiao Yang"
+output:
+  html_document:
+    code_folding: hide
+    toc: TRUE
+    toc_float: TRUE
+    number_sections: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  dev = "ragg_png",
+  dpi = 300,
+  fig.retina = 2,
+  fig.width = 10,
+  fig.asp = 0.4,
+  fig.align = "center",
+  out.width = "100%"
+)
+```
+
+```{r, message=FALSE, warning=FALSE}
+library(simtrial)
+library(knitr)
+library(tibble)
+library(dplyr)
+library(gt)
+library(ggplot2)
+library(bench)
+library(microbenchmark)
+library(PWEALL)
+```
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# The inverse transform method
+
+## `rexp`
+
+```{r}
+rpwexpexp <- function(n, rate = 1, duration = 1) {
+  # Need to check rate, t are positive real vectors of same length, t is increasing, h > 0
+  n_piece <- length(rate)
+  # Get number of piecewise rates
+  H <- c(0, cumsum(rate * duration))[1:n_piece]
+  duration <- c(0, cumsum(duration))[1:n_piece]
+  # Generate cumulative hazard for each observation
+  y <- rexp(n = n, rate = 1)
+  # Make a vector to record with interval each observation is in
+  interval <- rep(1, n)
+  if (n_piece > 1) {
+    for (i in 2:(n_piece)) interval[y >= H[i]] <- i
+    # if rate[i-1] = 0 (i.e. H[i] == H[i-1]), no observation will fall in to [i-1, i)
+  }
+  y <- (y - H[interval]) / rate[interval] + duration[interval]
+  # if rate[n_piece] == 0, observations in final interval are Inf
+  return(y)
+}
+```
+
+## `runif`
+
+```{r}
+rpwexpunif <- function(n, rate, duration) {
+  # Need to check rate, t are positive real vectors of same length, t is increasing, h > 0
+  n_piece <- length(rate)
+  # Get number of piecewise rates
+  H <- c(0, cumsum(rate * duration))[1:n_piece]
+  duration <- c(0, cumsum(duration))[1:n_piece]
+  # Generate cumulative hazard for each observation
+  y <- -log(runif(n))
+  # Make a vector to record with interval each observation is in
+  interval <- rep(1, n)
+  if (n_piece > 1) {
+    for (i in 2:(n_piece)) {
+      interval[y >= H[i]] <- i
+    }
+  }
+  y <- (y - H[interval]) / rate[interval] + duration[interval]
+  return(y)
+}
+
+# Simulate failRates
+n_rates <- 10
+duration <- floor(runif(n_rates, 1, 5))
+rate <- runif(n_rates, 0.0005, 0.095)
+rate[5] <- 0.0
+rate[10] <- 0.0
+tchange1 <- cumsum(duration)
+tchange0 <- c(0, tchange1)[1:(length(duration - 1))]
+
+# Expect the same results
+set.seed(2)
+s1 <- PWEALL::rpwe(n = 10, rate = rate, tchange = tchange0)
+set.seed(2)
+s2 <- rpwexpunif(n = 10, rate = rate, duration = duration)
+set.seed(2)
+s3 <- simtrial::rpwexp(
+  n = 10,
+  fail_rate = data.frame(
+    duration = duration,
+    rate = rate
+  )
+)
+
+all.equal(s1$r, s2)
+all.equal(s2, s3)
+```
+
+# Benchmark different methods for generating piecewise Exponential random numbers
+
+```{r}
+bm_rpwexp <- function(n, nr, itr = 1000) {
+  # simulate failRates
+  duration <- floor(runif(nr, 1, 5))
+  rate <- runif(nr, 0.0005, 0.095)
+  failTbl <- tibble(duration, rate)
+
+  times <- rep(0, 4)
+  for (i in 1:itr) {
+    # Naive method in R
+    start_time <- Sys.time()
+    simtrial:::rpwexp_naive(n = n, fail_rate = failTbl)
+    end_time <- Sys.time()
+    times[1] <- times[1] + difftime(end_time, start_time, units = "secs")[[1]]
+
+    # Naive method in C++
+    start_time <- Sys.time()
+    simtrial:::rpwexp_naive_cpp(n = n, fail_rate = failTbl)
+    end_time <- Sys.time()
+    times[2] <- times[2] + difftime(end_time, start_time, units = "secs")[[1]]
+
+    # Inverse CDF with unif in R
+    start_time <- Sys.time()
+    rpwexpunif(n = n, rate = rate, duration = duration)
+    end_time <- Sys.time()
+    times[3] <- times[3] + difftime(end_time, start_time, units = "secs")[[1]]
+
+    # Inverse CDF with unif in C++
+    start_time <- Sys.time()
+    simtrial::rpwexp(n = n, fail_rate = failTbl)
+    end_time <- Sys.time()
+    times[4] <- times[4] + difftime(end_time, start_time, units = "secs")[[1]]
+  }
+
+  return(times * 1e6 / itr)
+}
+
+nr_pool <- c(2, 4, 6, 8, 10, 20, 50, 100) # number of time intervals
+n_pool <- c(50, 100, 200, 500, 1000, 1500, 2000) # number of observations to be generated
+```
+
+## Runtime comparison across different number of observations to be generated
+
+```{r}
+# Fix n_rates = 10
+nr <- 10
+
+# Dataframe for storing timing results
+times_n <- data.frame(matrix(ncol = 5, nrow = length(n_pool)))
+colnames(times_n) <- c(
+  "n",
+  "NaiveR",
+  "NaiveCpp",
+  "InvR",
+  "InvCpp"
+)
+times_n$n <- n_pool
+
+# Benchmark
+for (i in 1:length(n_pool)) {
+  times_n[i, 2:5] <- bm_rpwexp(n_pool[i], nr)
+}
+
+# Reshape timing results for plot
+df_times_n <- data.frame(
+  x = times_n$n,
+  y = c(
+    times_n$NaiveR,
+    times_n$NaiveCpp,
+    times_n$InvR,
+    times_n$InvCpp
+  ),
+  group = c(
+    rep("Naive method in R", nrow(times_n)),
+    rep("Naive method in C++", nrow(times_n)),
+    rep("Inverse CDF with unif in R", nrow(times_n)),
+    rep("Inverse CDF with unif in C++", nrow(times_n))
+  )
+)
+
+p1 <- ggplot(df_times_n, aes(x, y, col = group)) +
+  geom_line() +
+  geom_point() +
+  scale_x_log10(breaks = c(50, 100, 200, 500, 1000, 2000)) +
+  # scale_x_continuous(trans='log10') +
+  # scale_y_continuous(trans='log10') +
+  labs(x = "Number of random numbers to be generated", y = paste0("Runtime (", "\U003BC", "s)")) +
+  cowplot::theme_cowplot() +
+  ggplot2::scale_color_manual(values = c("#e15759", "#f28e2c", "#59a14f", "#4e79a7", "#76b7b2"), name = "Method") +
+  theme(legend.title = element_blank()) +
+  theme(legend.position = c(0.05, 0.85))
+
+p1
+```
+
+## Runtime comparison across different number of intervals
+
+```{r}
+# Fix n = 1000
+n <- 1000
+
+# Dataframe for storing timing results
+times_nr <- data.frame(matrix(ncol = 5, nrow = length(nr_pool)))
+colnames(times_nr) <- c(
+  "n_rates",
+  "NaiveR",
+  "NaiveCpp",
+  "InvR",
+  "InvCpp"
+)
+times_nr$n_rates <- nr_pool
+
+# Benchmark
+for (i in 1:length(nr_pool)) {
+  times_nr[i, 2:5] <- bm_rpwexp(n, nr_pool[i])
+}
+
+# Reshape timing results for plot
+df_times_nr <- data.frame(
+  x = times_nr$n_rates,
+  y = c(
+    times_nr$NaiveR,
+    times_nr$NaiveCpp,
+    times_nr$InvR,
+    times_nr$InvCpp
+  ),
+  group = c(
+    rep("Naive method in R", nrow(times_nr)),
+    rep("Naive method in C++", nrow(times_nr)),
+    rep("Inverse CDF with unif in R", nrow(times_nr)),
+    rep("Inverse CDF with unif in C++", nrow(times_nr))
+  )
+)
+
+p2 <- ggplot(df_times_nr, aes(x, y, col = group)) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(trans = "log10") +
+  labs(x = "Number of periods in piecewise model", y = paste0("Runtime (", "\U003BC", "s)")) +
+  cowplot::theme_cowplot() +
+  ggplot2::scale_color_manual(values = c("#e15759", "#f28e2c", "#59a14f", "#4e79a7", "#76b7b2"), name = "Method") +
+  theme(legend.title = element_blank()) +
+  theme(legend.position = c(0.05, 0.85))
+
+p2
+```
+
+```{r}
+cowplot::plot_grid(p1, p2, align = "h", rel_widths = c(1, 1))
+```
