@@ -6,8 +6,50 @@
     <description>Recent content in Tags on Keaven M. Anderson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Dec 2023 00:00:00 +0000</lastBuildDate>
     <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>clinical trial simulation</title>
+      <link>/tags/clinical-trial-simulation/</link>
+      <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>/tags/clinical-trial-simulation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MaxCombo test</title>
+      <link>/tags/maxcombo-test/</link>
+      <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>/tags/maxcombo-test/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>non-proportional hazards</title>
+      <link>/tags/non-proportional-hazards/</link>
+      <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>/tags/non-proportional-hazards/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>simtrial</title>
+      <link>/tags/simtrial/</link>
+      <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>/tags/simtrial/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>time-to-event</title>
+      <link>/tags/time-to-event/</link>
+      <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>/tags/time-to-event/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>weighted logrank test</title>
+      <link>/tags/weighted-logrank-test/</link>
+      <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>/tags/weighted-logrank-test/</guid>
+      <description></description>
+    </item>
     <item>
       <title>gsDesign</title>
       <link>/tags/gsdesign/</link>

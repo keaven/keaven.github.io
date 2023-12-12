@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.120.4">
+
+
+<title>simtrial is on CRAN - Keaven M. Anderson</title>
+<meta property="og:title" content="simtrial is on CRAN - Keaven M. Anderson">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+<link rel="stylesheet" href="/css/textmate.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/blog/">Blog</a></li>
+    
+    <li><a href="/publications/">Publications</a></li>
+    
+    <li><a href="/software/">Software</a></li>
+    
+    <li><a href="/talks/">Talks</a></li>
+    
+    <li><a href="https://github.com/keaven">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/keaven-anderson-09aa7538/">LinkedIn</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">5 min read</span>
+    
+
+    <h1 class="article-title">simtrial is on CRAN</h1>
+
+    
+    
+    
+    <span class="article-author">Keaven Anderson</span>
+    
+    
+
+    
+    <p class="tags">
+      Tags:&nbsp;<a href="/tags/simtrial/">simtrial</a>, <a href="/tags/clinical-trial-simulation/">clinical trial simulation</a>, <a href="/tags/time-to-event/">time-to-event</a>, <a href="/tags/non-proportional-hazards/">non-proportional hazards</a>, <a href="/tags/weighted-logrank-test/">weighted logrank test</a>, <a href="/tags/maxcombo-test/">MaxCombo test</a></p>
+    
+
+    <span class="article-date">Published Date: December 11, 2023</span>
+    
+
+    <div class="article-content">
+      
+      
+
+
+<p><img src="images/simtrial-banner.png" width="1280" /></p>
+<p>We are excited to announce the first release of
+<a href="https://merck.github.io/simtrial/">simtrial</a> on CRAN.
+simtrial is a fast and extensible clinical trial simulation framework
+for time-to-event endpoints.</p>
+<p>You can install simtrial from CRAN with:</p>
+<pre class="r"><code>install.packages(&quot;simtrial&quot;)</code></pre>
+<div id="a-clinical-trial-simulation-framework" class="section level2">
+<h2>A clinical trial simulation framework</h2>
+<p>simtrial is intended to be a general purpose tool for simulating fixed,
+group sequential, or adaptive clinical trials. There are several design
+principles for the framework to create a coherent workflow while
+allowing maximum flexibility:</p>
+<ul>
+<li>It supports stratified populations and flexible parameters for generating
+enrollment, event times, and dropout times.</li>
+<li>It takes care of bookkeeping to enable easily going from data generation
+to creating analysis datasets for evaluation of standard or innovative designs
+and testing procedures.</li>
+<li>For a single endpoint, it will easily generate trials with multiple arms
+(for example, a single or multiple experimental arms versus a common control)
+and multiple study populations (for example, overall population and biomarker positive).</li>
+<li>While tools are built into the package for logrank and weighted logrank tests,
+arbitrary testing and estimation procedures are easily applied. In addition to
+weighted logrank tests, it supports combinations of weighted logrank tests
+(for instance, the <a href="https://doi.org/10.1080/19466315.2019.1697738">MaxCombo test</a>).</li>
+<li>The package uses piecewise constant enrollment, failure and dropout rates as
+a simple model able to approximate arbitrary distributions easily.</li>
+<li>This model also enables simulating <strong>non-proportional hazards</strong> assumptions
+that are transparent for users to explain to non-statistical collaborators.</li>
+</ul>
+</div>
+<div id="whats-new-in-simtrial" class="section level2">
+<h2>What’s new in simtrial</h2>
+<p>The initial development of simtrial started in 2018. It was open sourced on GitHub
+in 2021. In 2022 and 2023, it has gained substantial enhancements for a consistent,
+modern API style and much faster simulation speed.</p>
+<p>Since many users may have used the development version of simtrial from GitHub
+before this first CRAN release, we will summarize the most important updates below.
+For a comprehensive list of the recent updates, see the
+<a href="https://merck.github.io/simtrial/news/">changelog</a>.</p>
+<div id="blazingly-fast-simulation-with-data.table" class="section level3">
+<h3>Blazingly fast simulation with data.table</h3>
+<p>simtrial is designed with a core philosophy of basing most computations on
+efficient table transformations and to have a package that is easy to qualify
+for use in regulated environments.</p>
+<p>Thanks to the contribution from <a href="https://github.com/jdblischak"><span class="citation">@jdblischak</span></a>,
+we have rewritten the tabular data processing engine for simtrial using <a href="https://rdatatable.gitlab.io/data.table/">data.table</a>.
+This helps us achieve a 3x to 5x speedup compared to the previous
+implementation on average—meaning the difference between getting the answer
+after an entire work week versus one work day for large-scale simulations.</p>
+<p>Figure 1 shows the speedup for 10k simulations for a fixed sample size design
+using <code>sim_fixed_n()</code>, with the total sample size being 3,000 per simulation
+and the targeted event count for analysis being 700.
+The speedup folds as the number of CPU cores increases are highly consistent
+until 16 cores, where the data.table version is so fast that the parallelization
+overhead cannot be ignored anymore.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="images/table-backend-benchmark.png" alt="Comparison of runtime and speedup, highlighting the impact of different table backend types and parallel thread numbers. The y-axis is on a log10 scale, demonstrating consistent time saving and speedup." width="3000" />
+<p class="caption">
+Figure 1: Comparison of runtime and speedup, highlighting the impact of different table backend types and parallel thread numbers. The y-axis is on a log10 scale, demonstrating consistent time saving and speedup.
+</p>
+</div>
+<p>Even better, this backend change does not require the user to know data.table
+at all. All the input and output data is still kept as a base R data frame so
+you can use your favorite tools to prepare and summarize them.</p>
+</div>
+<div id="adopting-a-modern-parallelization-solution" class="section level3">
+<h3>Adopting a modern parallelization solution</h3>
+<p>The fixed sample size design simulation function
+<a href="https://merck.github.io/simtrial/reference/sim_fixed_n.html"><code>sim_fixed_n()</code></a>
+now utilizes the <a href="https://www.jottr.org/2023/06/26/dofuture/"><code>%dofuture%</code> operator</a> for parallelization.
+This change not only increases the flexibility for using any compatible
+parallelization backend, but also enhances the reproducibility by
+using parallel-safe random number generators.
+Check out the <a href="https://merck.github.io/simtrial/articles/parallel.html">new vignette</a>
+that demonstrates the parallelization workflow and coding best practices.
+These improvements were contributed by <a href="https://github.com/cmansch"><span class="citation">@cmansch</span></a>.</p>
+</div>
+<div id="accelerated-piecewise-exponential-distribution" class="section level3">
+<h3>Accelerated piecewise exponential distribution</h3>
+<p>The piecewise exponential distribution function
+<a href="https://merck.github.io/simtrial/reference/rpwexp.html"><code>rpwexp()</code></a>
+now adopts the inverse CDF method for random number generation.
+Although this method will not generate bitwise reproducible numbers as the
+“naive” method, they will still be
+<a href="https://github.com/Merck/simtrial/issues/168">matching stochastically</a>.
+This function is also written in C++ to ensure optimal performance,
+contributed by <a href="https://github.com/jianxiaoyang"><span class="citation">@jianxiaoyang</span></a>.
+Figure 2 shows the scaling patterns of the implementations using
+different methods and different languages.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="images/rpwexp-benchmark.png" alt="Scaling of different `rpwexp()` implementations. The C++ implementation of the inverse CDF method scales the best when number of observations or the number of time periods increases." width="3000" />
+<p class="caption">
+Figure 2: Scaling of different <code>rpwexp()</code> implementations. The C++ implementation of the inverse CDF method scales the best when number of observations or the number of time periods increases.
+</p>
+</div>
+</div>
+<div id="a-consistently-styled-api" class="section level3">
+<h3>A consistently styled API</h3>
+<p>This release introduces significant changes to the API.
+The user-visible changes include:</p>
+<ul>
+<li>Function and argument names now use snake case for consistency and readability.
+This aligns with the code style of <a href="https://merck.github.io/gsDesign2/">gsDesign2</a>.
+The dataset names are also updated to use snake case.
+See the <a href="https://merck.github.io/simtrial/reference/">function reference</a> for details.</li>
+<li>The base pipe operator is now used throughout the package. The magrittr pipe
+is no longer re-exported. If you have legacy code that generates an error on
+“could not find function <code>%&gt;%</code>”, you can either load magrittr explicitly, or
+change the pipe operator to <code>|&gt;</code>. Of course, this requires R &gt;= 4.1.0.</li>
+</ul>
+</div>
+<div id="new-functions-for-zero-early-weight-and-analysis-date" class="section level3">
+<h3>New functions for zero early weight and analysis date</h3>
+<p>This version also has important new functions contributed by
+<a href="https://github.com/LittleBeannie"><span class="citation">@LittleBeannie</span></a>:</p>
+<ul>
+<li><a href="https://merck.github.io/simtrial/reference/early_zero_weight.html">early_zero_weight()</a>
+is added as a weighting function for early data removal.</li>
+<li><a href="https://merck.github.io/simtrial/reference/get_analysis_date.html">get_analysis_date()</a>
+is added to calculate interim or final analysis dates under various conditions.</li>
+</ul>
+</div>
+</div>
+<div id="questions-and-feedback" class="section level2">
+<h2>Questions and feedback</h2>
+<p>We welcome your questions and feedback. Please feel free to
+<a href="https://github.com/Merck/simtrial/issues">raise an issue</a> on GitHub or
+share this post with colleagues who might find simtrial valuable.</p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+
