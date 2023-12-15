@@ -23,10 +23,10 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 - [R for Clinical Study Reports and Submission](https://r4csr.org/)
   (workshop, [slides](https://r4csr.org/slides/workshop-slides.html)).
   - R/Pharma Conference.
-- [The gsDesign Shiny app for clinical trial design](https://rinpharma.com/publication/rinpharma_247/) (talk)
+- [The gsDesign Shiny app for clinical trial design](https://rinpharma.com/publication/rinpharma_246/) (talk)
   - R/Pharma Conference.
 
 ## 2019
 
-- [Teaching an old dog new tricks: modernizing gsDesign](https://rinpharma.com/publication/rinpharma_73/)
+- [Teaching an old dog new tricks: modernizing gsDesign](https://rinpharma.com/publication/rinpharma_72/)
   - R/Pharma Conference.
