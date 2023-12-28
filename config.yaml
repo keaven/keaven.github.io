@@ -1,4 +1,4 @@
-baseurl: /
+baseurl: "https://keaven.github.io/"
 languageCode: en-us
 title: Keaven M. Anderson
 theme: hugo-lithium
