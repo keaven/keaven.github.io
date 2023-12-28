@@ -2,63 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Keaven M. Anderson</title>
-    <link>/</link>
+    <link>https://keaven.github.io/</link>
     <description>Recent content on Keaven M. Anderson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 Dec 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://keaven.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>simtrial is on CRAN</title>
-      <link>/blog/simtrial-0-3-2/</link>
+      <link>https://keaven.github.io/blog/simtrial-0-3-2/</link>
       <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>/blog/simtrial-0-3-2/</guid>
-      <description>We are excited to announce the first release of simtrial on CRAN. simtrial is a fast and extensible clinical trial simulation framework for time-to-event endpoints.
-You can install simtrial from CRAN with:
-install.packages(&amp;quot;simtrial&amp;quot;) A clinical trial simulation framework simtrial is intended to be a general purpose tool for simulating fixed, group sequential, or adaptive clinical trials. There are several design principles for the framework to create a coherent workflow while allowing maximum flexibility:</description>
+      <guid>https://keaven.github.io/blog/simtrial-0-3-2/</guid>
+      <description>We are excited to announce the first release of simtrial on CRAN. simtrial is a fast and extensible clinical trial simulation framework for time-to-event endpoints.&#xA;You can install simtrial from CRAN with:&#xA;install.packages(&amp;quot;simtrial&amp;quot;) A clinical trial simulation framework simtrial is intended to be a general purpose tool for simulating fixed, group sequential, or adaptive clinical trials. There are several design principles for the framework to create a coherent workflow while allowing maximum flexibility:</description>
     </item>
     <item>
       <title>gsDesign 3.6.0</title>
-      <link>/blog/gsdesign-3-6-0/</link>
+      <link>https://keaven.github.io/blog/gsdesign-3-6-0/</link>
       <pubDate>Fri, 17 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>/blog/gsdesign-3-6-0/</guid>
-      <description>We are thrilled to announce the release of gsDesign 3.6.0. gsDesign makes it easy to create group sequential clinical trial designs in R. gsDesign also offers a web interface to enable both design creation/updates without coding and code generation to reproduce the design.
-You can install gsDesign from CRAN with:
-install.packages(&amp;quot;gsDesign&amp;quot;) What’s new in gsDesign 3.6.0 Time-to-event endpoint design with calendar timing of analyses We added a gsSurvCalendar() function to enable group sequential design for time-to-event outcomes using calendar specification of interim analysis timing.</description>
+      <guid>https://keaven.github.io/blog/gsdesign-3-6-0/</guid>
+      <description>We are thrilled to announce the release of gsDesign 3.6.0. gsDesign makes it easy to create group sequential clinical trial designs in R. gsDesign also offers a web interface to enable both design creation/updates without coding and code generation to reproduce the design.&#xA;You can install gsDesign from CRAN with:&#xA;install.packages(&amp;quot;gsDesign&amp;quot;) What’s new in gsDesign 3.6.0 Time-to-event endpoint design with calendar timing of analyses We added a gsSurvCalendar() function to enable group sequential design for time-to-event outcomes using calendar specification of interim analysis timing.</description>
     </item>
     <item>
       <title>Publications</title>
-      <link>/publications/</link>
+      <link>https://keaven.github.io/publications/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/publications/</guid>
-      <description>Google Scholar profile | Download BibTeX file
-2023 | 2022 | 2021 | 2020 | 2018 | 2016 | 2015 | 2014 | 2012 | 2011 | 2010 | 2009 | 2008 | 2007 | 2006 | 2004 | 2003 | 2002 | 2001 | 2000 | 1999 | 1998 | 1997 | 1996 | 1995 | 1994 | 1993 | 1992 | 1991 | 1990 | 1989 | 1988 | 1987 | 1986 | 1985 | 1984 | 1983 | 1982 | 1980</description>
+      <guid>https://keaven.github.io/publications/</guid>
+      <description>Google Scholar profile | Download BibTeX file&#xA;2023 | 2022 | 2021 | 2020 | 2018 | 2016 | 2015 | 2014 | 2012 | 2011 | 2010 | 2009 | 2008 | 2007 | 2006 | 2004 | 2003 | 2002 | 2001 | 2000 | 1999 | 1998 | 1997 | 1996 | 1995 | 1994 | 1993 | 1992 | 1991 | 1990 | 1989 | 1988 | 1987 | 1986 | 1985 | 1984 | 1983 | 1982 | 1980</description>
     </item>
     <item>
       <title>Selected talks</title>
-      <link>/talks/</link>
+      <link>https://keaven.github.io/talks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/talks/</guid>
+      <guid>https://keaven.github.io/talks/</guid>
       <description>2022 Some industry trials over the last 30 years: personal experience and challenges 2022 ASA Biopharmaceutical Section Regulatory-Industry Statistics Workshop, Rockville, MD. Grammar of Group Sequential Design MCP Conference 2022: The 12th International Conference on Multiple Comparison Procedures, Bremen, Germany. Joint Statistical Meetings, Washington, DC. (recording) 2021 Group Sequential Design Under Non-Proportional Hazards (short course, slides). The 77th Annual Deming Conference on Applied Statistics. R for Clinical Study Reports and Submission (workshop, slides).</description>
     </item>
     <item>
       <title>Software</title>
-      <link>/software/</link>
+      <link>https://keaven.github.io/software/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/software/</guid>
-      <description>gsDesign: group sequential design
-CRAN | GitHub | Documentation
-gsDesign Explorer: group sequential design web interface
-rinpharma mirror | gsdesign mirror | Documentation
-gsDesign2: group sequential design under non-proportional hazards
-CRAN | GitHub | Documentation
-simtrial: clinical trial simulation
-CRAN | GitHub | Documentation
-gMCPLite: lightweight graph-based multiple comparison procedures
-CRAN | GitHub | Documentation
-gMCPShiny: Shiny app for graphical multiplicity control
-GitHub | Documentation
-pkglite: compact package representations</description>
+      <guid>https://keaven.github.io/software/</guid>
+      <description>gsDesign: group sequential design&#xA;CRAN | GitHub | Documentation&#xA;gsDesign Explorer: group sequential design web interface&#xA;rinpharma mirror | gsdesign mirror | Documentation&#xA;gsDesign2: group sequential design under non-proportional hazards&#xA;CRAN | GitHub | Documentation&#xA;simtrial: clinical trial simulation&#xA;CRAN | GitHub | Documentation&#xA;gMCPLite: lightweight graph-based multiple comparison procedures&#xA;CRAN | GitHub | Documentation&#xA;gMCPShiny: Shiny app for graphical multiplicity control&#xA;GitHub | Documentation&#xA;pkglite: compact package representations</description>
     </item>
   </channel>
 </rss>

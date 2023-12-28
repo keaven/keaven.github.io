@@ -2,20 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>weighted logrank test on Keaven M. Anderson</title>
-    <link>/tags/weighted-logrank-test/</link>
+    <link>https://keaven.github.io/tags/weighted-logrank-test/</link>
     <description>Recent content in weighted logrank test on Keaven M. Anderson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 Dec 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/weighted-logrank-test/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://keaven.github.io/tags/weighted-logrank-test/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>simtrial is on CRAN</title>
-      <link>/blog/simtrial-0-3-2/</link>
+      <link>https://keaven.github.io/blog/simtrial-0-3-2/</link>
       <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>/blog/simtrial-0-3-2/</guid>
-      <description>We are excited to announce the first release of simtrial on CRAN. simtrial is a fast and extensible clinical trial simulation framework for time-to-event endpoints.
-You can install simtrial from CRAN with:
-install.packages(&amp;quot;simtrial&amp;quot;) A clinical trial simulation framework simtrial is intended to be a general purpose tool for simulating fixed, group sequential, or adaptive clinical trials. There are several design principles for the framework to create a coherent workflow while allowing maximum flexibility:</description>
+      <guid>https://keaven.github.io/blog/simtrial-0-3-2/</guid>
+      <description>We are excited to announce the first release of simtrial on CRAN. simtrial is a fast and extensible clinical trial simulation framework for time-to-event endpoints.&#xA;You can install simtrial from CRAN with:&#xA;install.packages(&amp;quot;simtrial&amp;quot;) A clinical trial simulation framework simtrial is intended to be a general purpose tool for simulating fixed, group sequential, or adaptive clinical trials. There are several design principles for the framework to create a coherent workflow while allowing maximum flexibility:</description>
     </item>
   </channel>
 </rss>

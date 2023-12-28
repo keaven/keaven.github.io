@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Keaven M. Anderson</title>
-    <link>/tags/</link>
+    <link>https://keaven.github.io/tags/</link>
     <description>Recent content in Tags on Keaven M. Anderson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 Dec 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://keaven.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>clinical trial simulation</title>
-      <link>/tags/clinical-trial-simulation/</link>
+      <link>https://keaven.github.io/tags/clinical-trial-simulation/</link>
       <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>/tags/clinical-trial-simulation/</guid>
+      <guid>https://keaven.github.io/tags/clinical-trial-simulation/</guid>
       <description></description>
     </item>
     <item>
       <title>MaxCombo test</title>
-      <link>/tags/maxcombo-test/</link>
+      <link>https://keaven.github.io/tags/maxcombo-test/</link>
       <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>/tags/maxcombo-test/</guid>
+      <guid>https://keaven.github.io/tags/maxcombo-test/</guid>
       <description></description>
     </item>
     <item>
       <title>non-proportional hazards</title>
-      <link>/tags/non-proportional-hazards/</link>
+      <link>https://keaven.github.io/tags/non-proportional-hazards/</link>
       <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>/tags/non-proportional-hazards/</guid>
+      <guid>https://keaven.github.io/tags/non-proportional-hazards/</guid>
       <description></description>
     </item>
     <item>
       <title>simtrial</title>
-      <link>/tags/simtrial/</link>
+      <link>https://keaven.github.io/tags/simtrial/</link>
       <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>/tags/simtrial/</guid>
+      <guid>https://keaven.github.io/tags/simtrial/</guid>
       <description></description>
     </item>
     <item>
       <title>time-to-event</title>
-      <link>/tags/time-to-event/</link>
+      <link>https://keaven.github.io/tags/time-to-event/</link>
       <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>/tags/time-to-event/</guid>
+      <guid>https://keaven.github.io/tags/time-to-event/</guid>
       <description></description>
     </item>
     <item>
       <title>weighted logrank test</title>
-      <link>/tags/weighted-logrank-test/</link>
+      <link>https://keaven.github.io/tags/weighted-logrank-test/</link>
       <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>/tags/weighted-logrank-test/</guid>
+      <guid>https://keaven.github.io/tags/weighted-logrank-test/</guid>
       <description></description>
     </item>
     <item>
       <title>gsDesign</title>
-      <link>/tags/gsdesign/</link>
+      <link>https://keaven.github.io/tags/gsdesign/</link>
       <pubDate>Fri, 17 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>/tags/gsdesign/</guid>
+      <guid>https://keaven.github.io/tags/gsdesign/</guid>
       <description></description>
     </item>
     <item>
       <title>gsDesignShiny</title>
-      <link>/tags/gsdesignshiny/</link>
+      <link>https://keaven.github.io/tags/gsdesignshiny/</link>
       <pubDate>Fri, 17 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>/tags/gsdesignshiny/</guid>
+      <guid>https://keaven.github.io/tags/gsdesignshiny/</guid>
       <description></description>
     </item>
   </channel>
