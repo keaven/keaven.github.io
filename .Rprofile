@@ -19,5 +19,5 @@ options(
   blogdown.method = 'html'
 )
 
-# fix Hugo version
-options(blogdown.hugo.version = "0.121.1")
+# Fix Hugo version
+options(blogdown.hugo.version = "0.122.0")
