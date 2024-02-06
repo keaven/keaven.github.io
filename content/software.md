@@ -43,6 +43,11 @@ ul { padding-inline-start: 0px; list-style-type: none; }
   [GitHub](https://github.com/Merck/gMCPShiny) |
   [Documentation](https://merck.github.io/gMCPShiny/)
 
+- **wpgsd**: weighted parametric group sequential design
+
+  [GitHub](https://github.com/Merck/wpgsd) |
+  [Documentation](https://merck.github.io/wpgsd/)
+
 - **pkglite**: compact package representations
 
   [CRAN](https://cran.r-project.org/package=pkglite) |
