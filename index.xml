@@ -23,6 +23,13 @@
       <description>We are thrilled to announce the release of gsDesign 3.6.0. gsDesign makes it easy to create group sequential clinical trial designs in R. gsDesign also offers a web interface to enable both design creation/updates without coding and code generation to reproduce the design.&#xA;You can install gsDesign from CRAN with:&#xA;install.packages(&amp;quot;gsDesign&amp;quot;) What’s new in gsDesign 3.6.0 Time-to-event endpoint design with calendar timing of analyses We added a gsSurvCalendar() function to enable group sequential design for time-to-event outcomes using calendar specification of interim analysis timing.</description>
     </item>
     <item>
+      <title>Books</title>
+      <link>https://keaven.github.io/books/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://keaven.github.io/books/</guid>
+      <description>Clinical trial design Group Sequential Design Web Interface&#xA;Technical manual of the gsDesign web interface&#xA;gsDesign Technical Manual&#xA;Design and analyze group sequential trials with the R package gsDesign&#xA;Group Sequential Design Under Non-Proportional Hazards&#xA;Deming Conference course on group sequential design, December 6, 2021&#xA;Group Sequential Design by Example&#xA;Work in progress.&#xA;Clinical trial submission R for Clinical Study Reports and Submission&#xA;Prepare tables, listings, and figures for clinical study report and submission</description>
+    </item>
+    <item>
       <title>Publications</title>
       <link>https://keaven.github.io/publications/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
