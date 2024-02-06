@@ -22,10 +22,6 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 
   Deming Conference course on group sequential design, December 6, 2021
 
-- [Group Sequential Design by Example](https://keaven.github.io/gsd-by-example/)
-
-  Work in progress.
-
 ## Clinical trial submission
 
 - [R for Clinical Study Reports and Submission](https://r4csr.org/)
