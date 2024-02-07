@@ -61,7 +61,6 @@ img {
 
 .nav-logo {
   float: left;
-  margin-top: -11px;
   transition: transform 150ms ease-out;
 }
 
@@ -76,6 +75,26 @@ img {
   border-radius: 50%;
 }
 
+.nav-logo img {
+  margin-top: 0px;
+  margin-bottom: -12px;
+}
+
+/* Make nav a flexbox container to align two ul lists side by side */
+.nav {
+  display: flex;
+  /* Aligns items vertically in the center */
+  align-items: center;
+  /* Spaces out the nav logo and the link lists */
+  justify-content: space-between;
+}
+
+.nav-logo {
+  /* Prevent the logo from shrinking */
+  flex-shrink: 0;
+}
+
+/* Menu links */
 .nav-links {
   margin: 0;
   padding: 0;
@@ -99,6 +118,71 @@ img {
 
 .nav-links a:hover {
   color: #000;
+}
+
+/* Social links */
+.nav-social-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+}
+
+.nav-social-links li {
+  margin: 0 10px;
+}
+
+.nav-social-links li a {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.nav-social-links li a img {
+  width: 100%;
+  height: auto;
+}
+
+/* Nav layout on smaller screens */
+@media screen and (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links,
+  .nav-social-links {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+  }
+
+  .nav-links,
+  .nav-social-links {
+    justify-content: center;
+  }
+
+  .nav-links {
+    margin-top: 32px;
+  }
+
+  .nav-social-links {
+    margin-top: 20px;
+  }
+
+  .nav-links li,
+  .nav-social-links li {
+    margin: 0 10px;
+  }
+
+  .nav-links li {
+    font-size: 1.125rem;
+  }
+
+  .nav-social-links li:first-child {
+    margin-left: 0;
+  }
 }
 
 .content {

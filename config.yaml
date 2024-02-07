@@ -29,13 +29,10 @@ menu:
     - name: Talks
       url: /talks/
       weight: 5
-    - name: GitHub
-      url: https://github.com/keaven
-      weight: 6
-    - name: LinkedIn
-      url: https://www.linkedin.com/in/keaven-anderson-09aa7538/
-      weight: 7
 params:
+  social:
+    github: keaven
+    linkedin: keaven-anderson-09aa7538
   MathJaxCDN: //cdnjs.cloudflare.com/ajax/libs
   MathJaxVersion: 2.7.5
   description: Personal website of Keaven M. Anderson

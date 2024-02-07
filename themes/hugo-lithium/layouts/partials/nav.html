@@ -11,4 +11,15 @@
     <li><a href="{{ .URL }}">{{ .Name }}</a></li>
     {{ end }}
   </ul>
+
+  <ul class="nav-social-links">
+    {{ with .Site.Params.social }}
+      {{ if .github }}
+      <li><a href="https://github.com/{{ .github }}" target="_blank"><img src="{{ "images/github.svg" | relURL }}" alt="GitHub"></a></li>
+      {{ end }}
+      {{ if .linkedin }}
+      <li><a href="https://linkedin.com/in/{{ .linkedin }}" target="_blank"><img src="{{ "images/linkedin.svg" | relURL }}" alt="LinkedIn"></a></li>
+      {{ end }}
+    {{ end }}
+  </ul>
 </nav>
