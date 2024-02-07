@@ -42,7 +42,7 @@ params:
     - r
     - yaml
   highlightjsTheme: github
-  highlightjsVersion: 9.12.0
+  highlightjsVersion: 11.9.0
   logo:
     alt: Logo
     height: 50
