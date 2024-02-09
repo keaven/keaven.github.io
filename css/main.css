@@ -198,7 +198,8 @@ img {
   font-size: 34px;
   color: #222;
   margin: 0;
-  line-height: 1.3;
+  margin-bottom: 10px;
+  line-height: 1.1;
 }
 
 .article-author {
@@ -211,7 +212,7 @@ img {
 
 p.tags {
   color: #6e6e73;
-  margin-top: 0;
+  margin-top: 5px;
   margin-bottom: 0;
 }
 
