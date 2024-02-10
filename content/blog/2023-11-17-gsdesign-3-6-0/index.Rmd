@@ -6,6 +6,7 @@ slug: "gsdesign-3-6-0"
 tags:
   - gsDesign
   - gsDesignShiny
+  - group sequential design
 ---
 
 ```{r setup, include=FALSE}
