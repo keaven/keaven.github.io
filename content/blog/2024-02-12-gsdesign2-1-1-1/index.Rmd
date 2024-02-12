@@ -93,6 +93,13 @@ We continued to improve the maintainability of the package by tidying up the
 namespace, qualifying namespaces in tests to follow best practices,
 and limiting the token usage in GitHub Actions workflows.
 
+### Resources and support
+
+As always, please reach out with
+[questions or feature requests](https://github.com/Merck/gsDesign2/issues).
+The gsDesign2 team is devoted to creating simple, reliable, and effective tools
+that push what's possible in clinical trial design. Your feedback helps us grow.
+
 ## The gsDesign2 preprint
 
 Led by the package maintainer Yujie Zhao, our arXiv preprint
@@ -116,14 +123,10 @@ This recognition for my long career journey is only possible thanks to the
 dedicated statisticians who have mentored me, the brilliant colleagues
 who inspire me, and the teams who turn these statistical advances into
 tangible breakthroughs for patients.
-I extend my gratitude to my nominators for their support and acknowledgment
-of my contributions. This award underscores the importance of innovative
-statistical methodology and applications in real-world practice,
-and I am proud to have played a part in advancing our field.
-
-## Resources and support
-
-As always, please reach out with
-[questions or feature requests](https://github.com/Merck/gsDesign2/issues).
-The gsDesign2 team is devoted to creating simple, reliable, and effective tools
-that push what's possible in clinical trial design. Your feedback helps us grow.
+I extend my gratitude to my nominators for their support.
+This award underscores the importance of innovative
+statistical methodology and applications in real-world practice.
+I have been blessed to work on great projects from the Framingham Heart Study
+at the NIH to ReoPro and Remicade at Centocor/JNJ to the many projects
+I have consulted on and reviewed at Merck. These have been the true
+inspirations for my work.
