@@ -1,0 +1,112 @@
+---
+title: "gsDesign2 1.1.1, new preprint, and practice award"
+author: "Keaven Anderson"
+date: "2024-02-12"
+slug: "gsdesign2-1-1-1"
+tags:
+  - gsDesign2
+  - group sequential design
+  - non-proportional hazards
+---
+
+
+
+<p><img src="images/gsDesign2-banner.png" width="3808" /></p>
+<p>We are excited to announce the release of
+<a href="https://merck.github.io/gsDesign2/">gsDesign2</a> 1.1.1.
+This is a maintenance update that brings both new features and improvements.
+Built upon the <a href="https://keaven.github.io/gsDesign/">gsDesign</a> experience,
+gsDesign2 is an R package designed for group sequential clinical trial design
+under non-proportional hazards.</p>
+<p>You can install gsDesign2 from CRAN with:</p>
+<pre class="r"><code>install.packages(&quot;gsDesign2&quot;)</code></pre>
+<div id="whats-new-in-gsdesign2-1.1.1" class="section level2">
+<h2>What’s new in gsDesign2 1.1.1</h2>
+<p>Highlights of this release include the new method for generating RTF table
+outputs, more rigorous input checking, and performance optimizations.
+We also continued to improve our documentation and package infrastructure.
+For the detailed changes, see the complete <a href="https://merck.github.io/gsDesign2/news/">changelog</a>.</p>
+<div id="new-features-and-improvements" class="section level3">
+<h3>New features and improvements</h3>
+<p><strong>RTF output support</strong>:
+Besides the <a href="https://merck.github.io/gsDesign2/reference/as_gt.html"><code>as_gt()</code></a> method,
+users can now use the <a href="https://merck.github.io/gsDesign2/reference/as_rtf.html"><code>as_rtf()</code></a> method
+to generate (well-formatted) RTF tables for <code>fixed_design</code> and <code>gs_design</code> objects.
+This feature was requested by many users and is now implemented by
+our colleague <a href="https://github.com/fukuhiro2023"><span class="citation">@fukuhiro2023</span></a>.
+The RTF output feature could facilitate the direct integration of trial design
+outputs into reports widely used in clinical study documentation.</p>
+<p><strong>Performance optimizations</strong>:
+We have optimized the speed of
+<a href="https://merck.github.io/gsDesign2/reference/gs_power_ahr.html"><code>gs_power_ahr()</code></a>,
+a key function used to compute group sequential design power using average
+hazard ratio under non-proportional hazards. This performance improvement was
+achieved through refactoring the tabular data transformations using the
+data.table package, verifying our experience gained
+<a href="/blog/simtrial-0-3-2/">optimizing the simtrial package</a>.
+Similar improvements have also been applied to <code>gs_info_ahr()</code> and <code>pw_info()</code>.</p>
+</div>
+<div id="bug-fixes" class="section level3">
+<h3>Bug fixes</h3>
+<p><strong>Better input checking</strong>:
+We have made some changes to
+<a href="https://merck.github.io/gsDesign2/reference/gs_power_wlr.html"><code>gs_power_wlr()</code></a>
+and <a href="https://merck.github.io/gsDesign2/reference/to_integer.html"><code>to_integer()</code></a>
+to ensure rigorous checking and conversion of integer sample sizes, addressing
+previously reported issues.</p>
+<p>The enrollment and failure rate input constructors/validators
+in <a href="https://merck.github.io/gsDesign2/reference/define_enroll_rate.html"><code>define_enroll_rate()</code></a> and <a href="https://merck.github.io/gsDesign2/reference/define_fail_rate.html"><code>define_fail_rate()</code></a> are
+refactored to check only the input data frame content instead of the object class.
+This change eliminates superfluous warning messages and catches actual
+exceptions as errors properly.</p>
+<p><strong>Better exception handling</strong>:
+All <code>gs_design_*()</code> functions now provide explicit error handling of scenarios
+where all hazard ratios are set to 1 throughout the study.</p>
+</div>
+<div id="documentation-and-maintainability" class="section level3">
+<h3>Documentation and maintainability</h3>
+<p><strong>Expanded vignettes and examples</strong>:
+A new vignette is added to explain the mathematical details of
+<a href="https://merck.github.io/gsDesign2/articles/story-info-formula.html">statistical information under null and alternative hypotheses</a>.
+The descriptions and code examples are improved and expanded for functions like
+<code>define_enroll_rate()</code> and <code>define_fail_rate()</code>.</p>
+<p><strong>Infrastructure and testing</strong>:
+We continued to improve the maintainability of the package by tidying up the
+namespace, qualifying namespaces in tests to follow best practices,
+and limiting the token usage in GitHub Actions workflows.</p>
+</div>
+</div>
+<div id="the-gsdesign2-preprint" class="section level2">
+<h2>The gsDesign2 preprint</h2>
+<p>Led by the package maintainer Yujie Zhao, our arXiv preprint
+<a href="https://arxiv.org/abs/2312.01723">Group Sequential Design Under Non-proportional Hazards</a>
+explains the core theory and innovation behind gsDesign2.
+This paper addresses the challenge of designing clinical trials with
+time-to-event endpoints, particularly under non-proportional hazards scenarios.
+In the preprint, we introduced analytic forms for design characteristics,
+including sample size and boundary derivation. This enables more flexibility
+and efficiency of trial design, mirroring a wider range of real-world
+treatment possibilities.</p>
+</div>
+<div id="a-practice-award-and-thank-you" class="section level2">
+<h2>A practice award and thank you</h2>
+<p>I’m honored and a bit humbled to share that the
+<a href="https://community.amstat.org/philadelphia/home">ASA Philadelphia Chapter</a>
+has granted me their 2023–2024
+<a href="https://community.amstat.org/philadelphia/awards/awardsrecipients">Practice Excellence Award</a>.</p>
+<p>This recognition for my long career journey is only possible thanks to the
+dedicated statisticians who have mentored me, the brilliant colleagues
+who inspire me, and the teams who turn these statistical advances into
+tangible breakthroughs for patients.
+I extend my gratitude to my nominators for their support and acknowledgment
+of my contributions. This award underscores the importance of innovative
+statistical methodology and applications in real-world practice,
+and I am proud to have played a part in advancing our field.</p>
+</div>
+<div id="resources-and-support" class="section level2">
+<h2>Resources and support</h2>
+<p>As always, please reach out with
+<a href="https://github.com/Merck/gsDesign2/issues">questions or feature requests</a>.
+The gsDesign2 team is devoted to creating simple, reliable, and effective tools
+that push what’s possible in clinical trial design. Your feedback helps us grow.</p>
+</div>
