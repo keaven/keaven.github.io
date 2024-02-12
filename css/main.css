@@ -5,12 +5,6 @@ body {
   position: relative;
 }
 
-/* Prevent layout shift by scrollbar */
-html {
-  margin-left: calc(100vw - 100%);
-  margin-right: 0;
-}
-
 body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
