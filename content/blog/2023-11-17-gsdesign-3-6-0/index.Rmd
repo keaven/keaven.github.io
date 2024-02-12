@@ -7,6 +7,10 @@ tags:
   - gsDesign
   - gsDesignShiny
   - group sequential design
+description: >
+    gsDesign 3.6.0 brings improvements including time-to-event endpoint design
+    with calendar timing, integer sample size & event count conversion,
+    and survival design to exact binomial bounds translation.
 ---
 
 ```{r setup, include=FALSE}

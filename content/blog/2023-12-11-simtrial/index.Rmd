@@ -10,6 +10,11 @@ tags:
   - non-proportional hazards
   - weighted logrank test
   - MaxCombo test
+description: >
+    simtrial is now on CRAN: simtrial is a fast, extensible framework for
+    clinical trial simulation focusing on time-to-event endpoints.
+    It supports complex trial designs, stratified populations, and
+    non-proportional hazards.
 ---
 
 ```{r setup, include=FALSE}
