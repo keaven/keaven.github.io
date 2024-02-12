@@ -5,6 +5,12 @@ body {
   position: relative;
 }
 
+/* Prevent scrollbar from shifting content */
+html {
+  width: 100%;
+  width: 100vw;
+}
+
 body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
