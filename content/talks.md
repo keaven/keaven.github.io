@@ -7,6 +7,11 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 .article-content > ul > li { margin-bottom: 25px; }
 </style>
 
+## 2024
+
+- [Supporting Complex Group Sequential Designs](/talks/complex-gsd-isbs/)
+  - The 7th International Symposium on Biopharmaceutical Statistics, Baltimore, MD.
+
 ## 2022
 
 - [Some industry trials over the last 30 years: personal experience and challenges](/talks/industry-trials-30-years-biop/)
