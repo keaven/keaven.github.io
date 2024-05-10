@@ -429,7 +429,7 @@ pre code {
 
   .archive-item-link {
     text-overflow: "";
-    max-width: calc(100% - 160px);
+    max-width: calc(100% - 180px);
     white-space: normal;
     overflow: visible;
   }
