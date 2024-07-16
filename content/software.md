@@ -12,7 +12,8 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 
   [CRAN](https://cran.r-project.org/package=gsDesign) |
   [GitHub](https://github.com/keaven/gsDesign) |
-  [Documentation](https://keaven.github.io/gsDesign/)
+  [Documentation](https://keaven.github.io/gsDesign/)\
+  [Video - gsDesign: 15 Years of Development in 5 Minutes](https://www.youtube.com/watch?v=_ZUddQAhPFw)
 
 - **gsDesign Explorer**: group sequential design web interface
 
