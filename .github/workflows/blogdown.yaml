@@ -13,6 +13,10 @@ permissions: read-all
 
 jobs:
   blogdown:
+    permissions:
+      pages: write      # To deploy to Pages
+      id-token: write   # To verify the deployment originates from an appropriate source
+
     runs-on: ubuntu-latest
     # Only restrict concurrency for non-PR jobs
     concurrency:
