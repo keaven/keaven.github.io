@@ -13,10 +13,6 @@ permissions: read-all
 
 jobs:
   blogdown:
-    permissions:
-      pages: write      # To deploy to Pages
-      id-token: write   # To verify the deployment originates from an appropriate source
-
     runs-on: ubuntu-latest
     # Only restrict concurrency for non-PR jobs
     concurrency:
@@ -50,7 +46,7 @@ jobs:
 
       - name: Deploy to GitHub pages 🚀
         if: github.event_name != 'pull_request'
-        uses: JamesIves/github-pages-deploy-action@v4.5.0
+        uses: JamesIves/github-pages-deploy-action@v4.6.3
         with:
           branch: gh-pages
           folder: public
