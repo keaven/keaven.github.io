@@ -9,6 +9,8 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 
 ## 2024
 
+- [Design Software for Pivotal Trials](/talks/design-software-pivotal-trials/)
+  - Joint Statistical Meetings, Portland, OR.
 - [Supporting Complex Group Sequential Designs](/talks/complex-gsd-isbs/)
   - The 7th International Symposium on Biopharmaceutical Statistics, Baltimore, MD.
 
