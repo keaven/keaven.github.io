@@ -23,9 +23,9 @@ knitr::opts_chunk$set(
 ## Introduction
 
 The R package [bshazard](https://cran.r-project.org/package=bshazard)
-[@rebora2014bshazard] is available on CRAN since 2014.
+[@rebora2014bshazard] has been available on CRAN since 2014.
 It might be useful where there is interest in where smoothed hazard rates cross.
-When there are excess in one arm early and and excess in the other arm late,
+When there is excess in one arm early and excess in the other arm late,
 the time at which (smoothed) hazard rates cross can come well before the
 time when Kaplan-Meier survival curves cross.
 The time at which hazard rates cross is probably a more important demarcation
@@ -35,7 +35,7 @@ As noted by @rebora2014bshazard, another alternative is the
 [flexsurv](https://cran.r-project.org/package=flexsurv) package
 for comparison [@jackson2016flexsurv].
 The bshazard package has no unit testing included, but we have found the
-model checking procedure described below adequate to justify use of the package.
+model checking procedure described below adequate to justify the use of the package.
 This sort of model checking is likely to be recommended regardless of how
 hazard rates are estimated.
 
@@ -66,7 +66,7 @@ options(ggplot2.discrete.fill = scale_fill)
 
 ## Example
 
-For the following survival curves based on reverse engineered survival data
+For the following survival curves based on reverse-engineered survival data
 from the [simtrial](https://merck.github.io/simtrial/) package,
 the estimated Kaplan-Meier curves cross between 10 and 11 months.
 However, we see that the widest gap between the survival curves may have been
@@ -90,11 +90,11 @@ p
 
 We apply the bshazard R package to smooth the hazard rate over time within
 each treatment group.
-Here we used the default `nk = 31` knots for smoothing.
+Here, we used the default `nk = 31` knots for smoothing.
 The help file suggests a maximum of `nk = 40`, but higher values can be used
 to see behavior induced by the `nk` parameter.
-For instance increasing to `nk = 120` likely will give a much less smooth curve.
-Thus, this selecting this parameter can be a bit of an art given the
+For instance, increasing to `nk = 120` likely will give a much less smooth curve.
+Thus, selecting this parameter can be a bit of an art, given the
 descriptive nature of the analysis.
 
 ```{r, results="hide"}
@@ -128,19 +128,19 @@ ggplot(haz, aes(Month)) +
 ### Compare smoothed to actual survival function
 
 While bshazard has been published [@rebora2014bshazard],
-it is relatively new and this is worth checking the model fit.
-For this purpose, we transform the smoothed hazard rate estimates to
-survival curves and compare to the Kaplan-Meier curves previously estimated.
+it is relatively new, and it is worth checking the model fit.
+For this purpose, we transform the smoothed hazard rate estimates into
+survival curves and compare them to the Kaplan-Meier curves previously estimated.
 The Kaplan-Meier curves are reproduced accurately by the smoothed estimate
 for each treatment group.
 We noted previously that the Kaplan-Meier curves crossed after 10 months
 for the treatment groups.
 For hazard rates, we see the crossing of observed curves is before 6 months,
 suggesting a different interpretation of when an excess risk period ends
-for the experimental group compared to control.
+for the experimental group compared to the control.
 
 ```{r}
-# Get smoothed survival estimate
+# Get a smoothed survival estimate
 pl2 <- haz |>
   group_by(Treatment) |>
   mutate(
