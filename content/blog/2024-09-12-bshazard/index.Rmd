@@ -1,44 +1,23 @@
 ---
 title: "Smoothing hazard rates and survival curves with bshazard"
-author: Keaven Anderson and Nan Xiao
-output:
-  html_document:
-    theme:
-      version: 5
-      primary: "#00857C"
-      preset: "bootstrap"
-    highlight: "textmate"
-    toc: false
+author: Keaven Anderson, Nan Xiao
+date: "2024-09-12"
+slug: "bshazard"
+tags:
+  - simtrial
+  - clinical trial simulation
+  - time-to-event
+description: >
+    TBA...
 bibliography: "bshazard.bib"
 ---
 
-```{css, echo=FALSE}
-.main-container { max-width: 700px; }
-h1, h2, h3, h4, h5, h6 { color: #222; font-weight: 600; }
-h1.title { font-size: 38px; }
-h4.author { font-size: 30px; }
-p { font-size: 19px; line-height: 1.8; color: #333; }
-
-a {
-  text-decoration: none;
-  color: inherit;
-  border-bottom: 3px solid #CBF8DF;
-  box-shadow: inset 0 -4px 0 #CBF8DF;
-  background: transparent;
-  transition: background 150ms ease;
-}
-
-a:hover, a:focus { background: #CBF8DF; }
-
-p.tags { color: #6e6e73; }
-```
-
-<p class="tags">
-Tags: [simtrial](#), [clinical trial simulation](#), [time-to-event](#)
-</p>
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, out.width = "70%", fig.align = "center")
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  out.width = "70%",
+  fig.align = "center"
+)
 ```
 
 ## Introduction
@@ -208,17 +187,12 @@ pl |>
   )
 ```
 
-## Reproducibility note
+## Session info
 
-To reproduce this, assuming you are using a clean library:
-
-```{r, eval=FALSE}
-options(repos = c("https://"))
-install.packages("")
+```{r, echo=FALSE}
+pkgs <- sessioninfo::session_info(info = "packages")
+pkgs$packages$library <- NULL
+pkgs
 ```
-
-This will install the exact package versions.
-
-Then render this R Markdown file.
 
 ## References
