@@ -15,20 +15,29 @@ bibliography: "bshazard.bib"
 ```{r, include=FALSE}
 knitr::opts_chunk$set(
   echo = TRUE,
-  out.width = "70%",
+  out.width = "100%",
   fig.align = "center"
 )
 ```
 
 ## Introduction
 
-The [bshazard](https://cran.r-project.org/package=bshazard) R package [@rebora2014bshazard] is available on CRAN since 2014.
+The R package [bshazard](https://cran.r-project.org/package=bshazard)
+[@rebora2014bshazard] is available on CRAN since 2014.
 It might be useful where there is interest in where smoothed hazard rates cross.
-When there are excess in one arm early and and excess in the other arm late, the time at which (smoothed) hazard rates cross can come well before the time when Kaplan-Meier survival curves cross.
-The time at which hazard rates cross is probably a more important demarcation for the period of early excess risk than the time at which survival curves cross.
+When there are excess in one arm early and and excess in the other arm late,
+the time at which (smoothed) hazard rates cross can come well before the
+time when Kaplan-Meier survival curves cross.
+The time at which hazard rates cross is probably a more important demarcation
+for the period of early excess risk than the time at which survival curves cross.
 
-As noted by @rebora2014bshazard, another alternative is the [flexsurv](https://cran.r-project.org/package=flexsurv) package for comparison [@jackson2016flexsurv].
-The bshazard package has no unit testing included, but we have found the model checking procedure described below adequate to justify use of the package. This sort of model checking is likely to be recommended regardless of how hazard rates are estimated.
+As noted by @rebora2014bshazard, another alternative is the
+[flexsurv](https://cran.r-project.org/package=flexsurv) package
+for comparison [@jackson2016flexsurv].
+The bshazard package has no unit testing included, but we have found the
+model checking procedure described below adequate to justify use of the package.
+This sort of model checking is likely to be recommended regardless of how
+hazard rates are estimated.
 
 ```{r, message=FALSE, warning=FALSE}
 library(bshazard)
@@ -47,17 +56,23 @@ data(ex6_crossing)
 # Set theme and color scales globally
 ggplot2::theme_set(cowplot::theme_cowplot())
 
-scale_color <- function(...) ggplot2::scale_color_manual(values = c("#e15759", "#4e79a7"), ...)
-scale_fill <- function(...) ggplot2::scale_fill_manual(values = c("#e15759", "#4e79a7"), ...)
+# Observable 10 color palette
+pal <- c("#EFB118", "#4269D0")
+scale_color <- function(...) ggplot2::scale_color_manual(values = pal, ...)
+scale_fill <- function(...) ggplot2::scale_fill_manual(values = pal, ...)
 options(ggplot2.discrete.colour = scale_color)
 options(ggplot2.discrete.fill = scale_fill)
 ```
 
 ## Example
 
-For the following survival curves based on reverse engineered survival data from the [simtrial](https://merck.github.io/simtrial/) package, the estimated Kaplan-Meier curves cross between 10 and 11 months.
-However, we see that the widest gap between the survival curves may have been around 3 months, with the curves converging thereafter.
-We will evaluate this further using B-spline smoothed hazard rate estimates in the next section.
+For the following survival curves based on reverse engineered survival data
+from the [simtrial](https://merck.github.io/simtrial/) package,
+the estimated Kaplan-Meier curves cross between 10 and 11 months.
+However, we see that the widest gap between the survival curves may have been
+around 3 months, with the curves converging thereafter.
+We will evaluate this further using B-spline smoothed hazard rate estimates
+in the next section.
 
 ```{r}
 pl <- survfit2(Surv(month, evntd) ~ trt, data = ex6_crossing)
@@ -73,10 +88,14 @@ p
 
 ## Smoothed hazard rate estimates
 
-We apply the bshazard R package to smooth the hazard rate over time within each treatment group.
+We apply the bshazard R package to smooth the hazard rate over time within
+each treatment group.
 Here we used the default `nk = 31` knots for smoothing.
-The help file suggests a maximum of `nk = 40`, but higher values can be used to see behavior induced by the `nk` parameter. For instance increasing to `nk = 120` likely will give a much less smooth curve.
-Thus, this selecting this parameter can be a bit of an art given the descriptive nature of the analysis.
+The help file suggests a maximum of `nk = 40`, but higher values can be used
+to see behavior induced by the `nk` parameter.
+For instance increasing to `nk = 120` likely will give a much less smooth curve.
+Thus, this selecting this parameter can be a bit of an art given the
+descriptive nature of the analysis.
 
 ```{r, results="hide"}
 fit <- bshazard(Surv(month, evntd) ~ 1, data = subset(ex6_crossing, trt == 0), nk = 31)
@@ -108,11 +127,17 @@ ggplot(haz, aes(Month)) +
 
 ### Compare smoothed to actual survival function
 
-While bshazard has been published [@rebora2014bshazard], it is relatively new and this is worth checking the model fit.
-For this purpose, we transform the smoothed hazard rate estimates to survival curves and compare to the Kaplan-Meier curves previously estimated.
-The Kaplan-Meier curves are reproduced accurately by the smoothed estimate for each treatment group.
-We noted previously that the Kaplan-Meier curves crossed after 10 months for the treatment groups.
-For hazard rates, we see the crossing of observed curves is before 6 months, suggesting a different interpretation of when an excess risk period ends for the experimental group compared to control.
+While bshazard has been published [@rebora2014bshazard],
+it is relatively new and this is worth checking the model fit.
+For this purpose, we transform the smoothed hazard rate estimates to
+survival curves and compare to the Kaplan-Meier curves previously estimated.
+The Kaplan-Meier curves are reproduced accurately by the smoothed estimate
+for each treatment group.
+We noted previously that the Kaplan-Meier curves crossed after 10 months
+for the treatment groups.
+For hazard rates, we see the crossing of observed curves is before 6 months,
+suggesting a different interpretation of when an excess risk period ends
+for the experimental group compared to control.
 
 ```{r}
 # Get smoothed survival estimate
@@ -157,12 +182,12 @@ pl |>
   geom_line(
     data = pl2 |> filter(Treatment == "Experimental"),
     aes(x = Month, y = Survival),
-    col = "#00857C", linetype = "dashed", inherit.aes = FALSE
+    col = pal[2], linetype = "dashed", inherit.aes = FALSE
   ) +
   geom_line(
     data = pl2 |> filter(Treatment == "Control"),
     aes(x = Month, y = Survival),
-    col = "#66203A", linetype = "dashed", inherit.aes = FALSE
+    col = pal[1], linetype = "dashed", inherit.aes = FALSE
   ) +
   theme(
     legend.position = "bottom",
