@@ -1,0 +1,283 @@
+---
+title: "Smoothing hazard rates and survival curves with bshazard"
+author: Keaven Anderson, Nan Xiao
+date: "2024-09-12"
+slug: "bshazard"
+tags:
+  - simtrial
+  - clinical trial simulation
+  - time-to-event
+description: >
+    Learn how to smooth hazard rates and survival curves using the R package
+    bshazard. This post provides practical examples, code snippets,
+    and visualizations to identify crossing points in hazard rates,
+    compare smoothed estimates with Kaplan-Meier curves, and validate
+    model fits in survival analysis.
+bibliography: "bshazard.bib"
+---
+
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The R package <a href="https://cran.r-project.org/package=bshazard">bshazard</a>
+<span class="citation">(<a href="#ref-rebora2014bshazard">Rebora, Salim, and Reilly 2014</a>)</span> has been available on CRAN since 2014.
+It might be useful where there is interest in where smoothed hazard rates cross.
+When there is excess in one arm early and excess in the other arm late,
+the time at which (smoothed) hazard rates cross can come well before the
+time when Kaplan-Meier survival curves cross.
+The time at which hazard rates cross is probably a more important demarcation
+for the period of early excess risk than the time at which survival curves cross.</p>
+<p>As noted by <span class="citation">Rebora, Salim, and Reilly (<a href="#ref-rebora2014bshazard">2014</a>)</span>, another alternative is the
+<a href="https://cran.r-project.org/package=flexsurv">flexsurv</a> package
+for comparison <span class="citation">(<a href="#ref-jackson2016flexsurv">Jackson 2016</a>)</span>.
+The bshazard package has no unit testing included, but we have found the
+model checking procedure described below adequate to justify the use of the package.
+This sort of model checking is likely to be recommended regardless of how
+hazard rates are estimated.</p>
+<pre class="r"><code>library(bshazard)
+library(simtrial)
+library(dplyr)
+library(survival)
+library(ggsurvfit)</code></pre>
+<pre class="r"><code># Crossing survival curves example from simtrial
+data(ex6_crossing)</code></pre>
+<pre class="r"><code># Set theme and color scales globally
+ggplot2::theme_set(cowplot::theme_cowplot())
+
+# Observable 10 color palette
+pal &lt;- c(&quot;#EFB118&quot;, &quot;#4269D0&quot;, &quot;#9498A0&quot;)
+pal_ctrl &lt;- pal[1]
+pal_expt &lt;- pal[2]
+pal_gray &lt;- pal[3]
+scale_color &lt;- function(...) scale_color_manual(values = pal, ...)
+scale_fill &lt;- function(...) scale_fill_manual(values = pal, ...)
+options(ggplot2.discrete.colour = scale_color)
+options(ggplot2.discrete.fill = scale_fill)</code></pre>
+</div>
+<div id="example" class="section level2">
+<h2>Example</h2>
+<p>For the following survival curves based on reverse-engineered survival data
+from the <a href="https://merck.github.io/simtrial/">simtrial</a> package,
+the estimated Kaplan-Meier curves cross between 10 and 11 months.
+However, we see that the widest gap between the survival curves may have been
+around 3 months, with the curves converging thereafter.
+We will evaluate this further using B-spline smoothed hazard rate estimates
+in the next section.</p>
+<pre class="r"><code>pl &lt;- survfit2(Surv(month, evntd) ~ trt, data = ex6_crossing)
+p &lt;- pl |&gt;
+  ggsurvfit(theme = cowplot::theme_cowplot()) +
+  add_quantile(x_value = 10.7, linetype = 2, color = pal_gray) +
+  scale_x_continuous(
+    breaks = seq(0, 27, 3),
+    minor_breaks = seq(0, 27, 1)
+  ) +
+  add_risktable(risktable_stats = &quot;n.risk&quot;) +
+  theme(legend.position = &quot;bottom&quot;) +
+  scale_color_discrete(labels = c(&quot;Control&quot;, &quot;Experimental&quot;)) +
+  guides(x = guide_axis(minor.ticks = TRUE))
+p</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:kaplan-meier-survival-curves"></span>
+<img src="{{< blogdown/postref >}}index_files/figure-html/kaplan-meier-survival-curves-1.png" alt="Kaplan-Meier survival curves for Control and Treatment groups, with risk tables displaying the number at risk over time. A vertical dashed line between 10 and 11 months indicates the point where the survival curves cross." width="100%" />
+<p class="caption">
+Figure 1: Kaplan-Meier survival curves for Control and Treatment groups, with risk tables displaying the number at risk over time. A vertical dashed line between 10 and 11 months indicates the point where the survival curves cross.
+</p>
+</div>
+</div>
+<div id="smoothed-hazard-rate-estimates" class="section level2">
+<h2>Smoothed hazard rate estimates</h2>
+<p>We apply the bshazard package to smooth the hazard rate over time within
+each treatment group.
+Here, we used the default <code>nk = 31</code> knots for smoothing.
+The <a href="https://rdrr.io/cran/bshazard/man/bshazard.html"><code>bshazard()</code> documentation</a>
+suggests a maximum of <code>nk = 40</code>, but higher values can be used
+to see behavior induced by the <code>nk</code> parameter.
+For instance, increasing to <code>nk = 120</code> likely will give a much less smooth curve.
+Thus, selecting this parameter can be a bit of an art, given the
+descriptive nature of the analysis.</p>
+<pre class="r"><code>fit &lt;- bshazard(
+  Surv(month, evntd) ~ 1,
+  data = subset(ex6_crossing, trt == 0),
+  nk = 31
+)
+fit2 &lt;- bshazard(
+  Surv(month, evntd) ~ 1,
+  data = subset(ex6_crossing, trt == 1),
+  nk = 31
+)</code></pre>
+<p>We plot the hazard rates with confidence bands by treatment group.</p>
+<pre class="r"><code>haz &lt;- bind_rows(
+  data.frame(
+    Month = fit$time, Hazard = fit$hazard,
+    Treatment = &quot;Control&quot;,
+    lower.ci = fit$lower.ci, upper.ci = fit$upper.ci
+  ),
+  data.frame(
+    Month = fit2$time, Hazard = fit2$hazard,
+    Treatment = &quot;Experimental&quot;,
+    lower.ci = fit2$lower.ci, upper.ci = fit2$upper.ci
+  )
+)
+
+ggplot(haz, aes(Month)) +
+  geom_line(aes(y = Hazard, col = Treatment)) +
+  geom_ribbon(
+    aes(ymin = lower.ci, ymax = upper.ci, fill = Treatment),
+    alpha = 0.2, linetype = 0
+  ) +
+  scale_x_continuous(
+    breaks = seq(0, 27, 3),
+    minor_breaks = seq(0, 27, 1)
+  ) +
+  geom_segment(
+    aes(x = 5.55, y = 0, xend = 5.55, yend = 0.065),
+    linetype = 2, color = pal_gray, linewidth = 0.5
+  ) +
+  geom_segment(
+    aes(x = 0, y = 0.065, xend = 5.55, yend = 0.065),
+    linetype = 2, color = pal_gray, linewidth = 0.5
+  ) +
+  ylab(&quot;Hazard rate&quot;) +
+  ylim(0, 0.1) +
+  theme(legend.position = &quot;bottom&quot;) +
+  guides(x = guide_axis(minor.ticks = TRUE))</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:smoothed-hazard-rates"></span>
+<img src="{{< blogdown/postref >}}index_files/figure-html/smoothed-hazard-rates-1.png" alt="Smoothed hazard rate estimates with 95% confidence intervals for Control and Experimental groups over time. Dashed lines mark the crossing point before 6 months, highlighting where the hazard rates of the two groups intersect." width="100%" />
+<p class="caption">
+Figure 2: Smoothed hazard rate estimates with 95% confidence intervals for Control and Experimental groups over time. Dashed lines mark the crossing point before 6 months, highlighting where the hazard rates of the two groups intersect.
+</p>
+</div>
+<div id="compare-smoothed-to-actual-survival-function" class="section level3">
+<h3>Compare smoothed to actual survival function</h3>
+<p>While bshazard has been published <span class="citation">(<a href="#ref-rebora2014bshazard">Rebora, Salim, and Reilly 2014</a>)</span>,
+it is relatively new, and it is worth checking the model fit.
+For this purpose, we transform the smoothed hazard rate estimates into
+survival curves and compare them to the Kaplan-Meier curves previously estimated.
+The Kaplan-Meier curves are reproduced accurately by the smoothed estimate
+for each treatment group.
+We noted previously that the Kaplan-Meier curves crossed after 10 months
+for the treatment groups.
+For hazard rates, we see the crossing of observed curves is before 6 months,
+suggesting a different interpretation of when an excess risk period ends
+for the experimental group compared to the control.</p>
+<pre class="r"><code># Get a smoothed survival estimate
+pl2 &lt;- haz |&gt;
+  group_by(Treatment) |&gt;
+  mutate(
+    CHaz = cumsum((Month - lag(Month, default = 0)) * Hazard),
+    Survival = exp(-CHaz), Estimate = &quot;Smoothed&quot;
+  ) |&gt;
+  select(Survival, Month, Treatment, Estimate)
+
+# Get Kaplan-Meier data from plots
+km &lt;- p$data |&gt;
+  as.data.frame() |&gt;
+  transmute(
+    Survival = estimate,
+    Month = time,
+    Treatment = ifelse(strata == 1, &quot;Experimental&quot;, &quot;Control&quot;),
+    Estimate = &quot;Kaplan-Meier&quot;
+  )
+
+# Combine and plot
+ggplot(
+  bind_rows(pl2, km),
+  aes(x = Month, y = Survival, col = Treatment, lty = Estimate)
+) +
+  geom_line() +
+  scale_x_continuous(
+    breaks = seq(0, 27, 3),
+    minor_breaks = seq(0, 27, 1)
+  ) +
+  ylab(&quot;Survival&quot;) +
+  ggtitle(&quot;Smoothed vs. Kaplan-Meier Survival Estimates&quot;) +
+  theme(
+    legend.position = &quot;bottom&quot;,
+    legend.title = element_text(size = 11),
+    legend.text = element_text(size = 11)
+  ) +
+  guides(
+    color = guide_legend(order = 1),
+    linetype = guide_legend(order = 2),
+    x = guide_axis(minor.ticks = TRUE)
+  )</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:smoothed-vs-km-survival-estimates"></span>
+<img src="{{< blogdown/postref >}}index_files/figure-html/smoothed-vs-km-survival-estimates-1.png" alt="Comparison of smoothed survival estimates and Kaplan-Meier survival curves. The smoothed survival curves (dashed lines) closely match the Kaplan-Meier estimates (solid lines), validating the smoothing approach." width="100%" />
+<p class="caption">
+Figure 3: Comparison of smoothed survival estimates and Kaplan-Meier survival curves. The smoothed survival curves (dashed lines) closely match the Kaplan-Meier estimates (solid lines), validating the smoothing approach.
+</p>
+</div>
+<p>The following example draws the Kaplan-Meier curve as a step function.</p>
+<pre class="r"><code>pl |&gt;
+  ggsurvfit(theme = cowplot::theme_cowplot()) +
+  scale_x_continuous(
+    breaks = seq(0, 27, 3),
+    minor_breaks = seq(0, 27, 1)
+  ) +
+  geom_line(
+    data = pl2 |&gt; filter(Treatment == &quot;Experimental&quot;),
+    aes(x = Month, y = Survival),
+    col = pal_expt, linetype = &quot;dashed&quot;, inherit.aes = FALSE
+  ) +
+  geom_line(
+    data = pl2 |&gt; filter(Treatment == &quot;Control&quot;),
+    aes(x = Month, y = Survival),
+    col = pal_ctrl, linetype = &quot;dashed&quot;, inherit.aes = FALSE
+  ) +
+  theme(
+    legend.position = &quot;bottom&quot;,
+    legend.title = element_text(size = 11),
+    legend.text = element_text(size = 11)
+  ) +
+  scale_color_discrete(labels = c(&quot;Control&quot;, &quot;Experimental&quot;)) +
+  ggtitle(&quot;Smoothed vs. Kaplan-Meier Survival Estimates&quot;) +
+  xlab(&quot;Month&quot;) +
+  ylab(&quot;Survival&quot;) +
+  # Add a legend for linetype
+  geom_line(
+    data = data.frame(
+      x = c(0, 0, 0, 0), y = c(0, 0, 0, 0),
+      Estimate = factor(rep(c(&quot;Kaplan-Meier&quot;, &quot;Smoothed&quot;), 2))
+    ),
+    aes(x = x, y = y, linetype = Estimate), inherit.aes = FALSE
+  ) +
+  guides(
+    color = guide_legend(title = &quot;Treatment&quot;, order = 1),
+    linetype = guide_legend(title = &quot;Estimate&quot;, order = 2),
+    x = guide_axis(minor.ticks = TRUE)
+  )</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:km-step-functions-with-smoothed-survival"></span>
+<img src="{{< blogdown/postref >}}index_files/figure-html/km-step-functions-with-smoothed-survival-1.png" alt="Kaplan-Meier survival curves displayed as step functions (solid lines) with smoothed survival estimates (dashed lines)." width="100%" />
+<p class="caption">
+Figure 4: Kaplan-Meier survival curves displayed as step functions (solid lines) with smoothed survival estimates (dashed lines).
+</p>
+</div>
+</div>
+</div>
+<div id="session-info" class="section level2">
+<h2>Session info</h2>
+<pre><code>## ═ Session info ═══════════════════════════════════════════════════════════════
+## ─ Packages ───────────────────────────────────────────────────────────────────
+##  package   * version date (UTC) lib source
+##  bshazard  * 1.2     2024-05-12 []  CRAN (R 4.4.0)
+##  dplyr     * 1.1.4   2023-11-17 []  CRAN (R 4.4.0)
+##  Epi       * 2.55    2024-09-10 []  CRAN (R 4.4.1)
+##  ggplot2   * 3.5.1   2024-04-23 []  CRAN (R 4.4.0)
+##  ggsurvfit * 1.1.0   2024-05-08 []  CRAN (R 4.4.0)
+##  simtrial  * 0.4.1   2024-05-03 []  CRAN (R 4.4.0)
+##  survival  * 3.7-0   2024-06-05 []  CRAN (R 4.4.0)
+## 
+## 
+## ──────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-jackson2016flexsurv" class="csl-entry">
+Jackson, Christopher H. 2016. <span>“<span class="nocase">flexsurv</span>: A Platform for Parametric Survival Modeling in <span>R</span>.”</span> <em>Journal of Statistical Software</em> 70 (8): 1–33. <a href="https://doi.org/10.18637/jss.v070.i08">https://doi.org/10.18637/jss.v070.i08</a>.
+</div>
+<div id="ref-rebora2014bshazard" class="csl-entry">
+Rebora, Paola, Agus Salim, and Marie Reilly. 2014. <span>“<span class="nocase">bshazard</span>: A Flexible Tool for Nonparametric Smoothing of the Hazard Function.”</span> <em>The R Journal</em> 6 (2): 114–22. <a href="https://doi.org/10.32614/RJ-2014-028">https://doi.org/10.32614/RJ-2014-028</a>.
+</div>
+</div>
+</div>
