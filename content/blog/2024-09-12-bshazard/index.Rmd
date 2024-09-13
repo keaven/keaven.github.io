@@ -8,7 +8,11 @@ tags:
   - clinical trial simulation
   - time-to-event
 description: >
-    TBA...
+    Learn how to smooth hazard rates and survival curves using the R package
+    bshazard. This post provides practical examples, code snippets,
+    and visualizations to identify crossing points in hazard rates,
+    compare smoothed estimates with Kaplan-Meier curves, and validate
+    model fits in survival analysis.
 bibliography: "bshazard.bib"
 ---
 
@@ -16,7 +20,10 @@ bibliography: "bshazard.bib"
 knitr::opts_chunk$set(
   echo = TRUE,
   out.width = "100%",
-  fig.align = "center"
+  fig.align = "center",
+  fig.width = 7 / 1.2,
+  fig.height = 5 / 1.2,
+  dpi = 300
 )
 ```
 
@@ -57,9 +64,12 @@ data(ex6_crossing)
 ggplot2::theme_set(cowplot::theme_cowplot())
 
 # Observable 10 color palette
-pal <- c("#EFB118", "#4269D0")
-scale_color <- function(...) ggplot2::scale_color_manual(values = pal, ...)
-scale_fill <- function(...) ggplot2::scale_fill_manual(values = pal, ...)
+pal <- c("#EFB118", "#4269D0", "#9498A0")
+pal_ctrl <- pal[1]
+pal_expt <- pal[2]
+pal_gray <- pal[3]
+scale_color <- function(...) scale_color_manual(values = pal, ...)
+scale_fill <- function(...) scale_fill_manual(values = pal, ...)
 options(ggplot2.discrete.colour = scale_color)
 options(ggplot2.discrete.fill = scale_fill)
 ```
@@ -75,54 +85,91 @@ We will evaluate this further using B-spline smoothed hazard rate estimates
 in the next section.
 
 ```{r}
+#| kaplan-meier-survival-curves,
+#| fig.height = 5.3 / 1.2,
+#| fig.cap="Kaplan-Meier survival curves for Control and Treatment groups, with risk tables displaying the number at risk over time. A vertical dashed line between 10 and 11 months indicates the point where the survival curves cross."
 pl <- survfit2(Surv(month, evntd) ~ trt, data = ex6_crossing)
 p <- pl |>
   ggsurvfit(theme = cowplot::theme_cowplot()) +
-  scale_x_continuous(breaks = seq(0, 27, 3)) +
-  # add_confidence_interval() +
+  add_quantile(x_value = 10.7, linetype = 2, color = pal_gray) +
+  scale_x_continuous(
+    breaks = seq(0, 27, 3),
+    minor_breaks = seq(0, 27, 1)
+  ) +
   add_risktable(risktable_stats = "n.risk") +
   theme(legend.position = "bottom") +
-  scale_color_discrete(labels = c("Control", "Treatment"))
+  scale_color_discrete(labels = c("Control", "Experimental")) +
+  guides(x = guide_axis(minor.ticks = TRUE))
 p
 ```
 
 ## Smoothed hazard rate estimates
 
-We apply the bshazard R package to smooth the hazard rate over time within
+We apply the bshazard package to smooth the hazard rate over time within
 each treatment group.
 Here, we used the default `nk = 31` knots for smoothing.
-The help file suggests a maximum of `nk = 40`, but higher values can be used
+The [`bshazard()` documentation](https://rdrr.io/cran/bshazard/man/bshazard.html)
+suggests a maximum of `nk = 40`, but higher values can be used
 to see behavior induced by the `nk` parameter.
 For instance, increasing to `nk = 120` likely will give a much less smooth curve.
 Thus, selecting this parameter can be a bit of an art, given the
 descriptive nature of the analysis.
 
 ```{r, results="hide"}
-fit <- bshazard(Surv(month, evntd) ~ 1, data = subset(ex6_crossing, trt == 0), nk = 31)
-fit2 <- bshazard(Surv(month, evntd) ~ 1, data = subset(ex6_crossing, trt == 1), nk = 31)
+fit <- bshazard(
+  Surv(month, evntd) ~ 1,
+  data = subset(ex6_crossing, trt == 0),
+  nk = 31
+)
+fit2 <- bshazard(
+  Surv(month, evntd) ~ 1,
+  data = subset(ex6_crossing, trt == 1),
+  nk = 31
+)
 ```
 
 We plot the hazard rates with confidence bands by treatment group.
 
-```{r, warning=FALSE}
+```{r}
+#| smoothed-hazard-rates,
+#| warning=FALSE,
+#| fig.height = 4.6 / 1.2,
+#| fig.cap="Smoothed hazard rate estimates with 95% confidence intervals for Control and Experimental groups over time. Dashed lines mark the crossing point before 6 months, highlighting where the hazard rates of the two groups intersect."
 haz <- bind_rows(
   data.frame(
-    Month = fit$time, Hazard = fit$hazard, Treatment = "Control",
+    Month = fit$time, Hazard = fit$hazard,
+    Treatment = "Control",
     lower.ci = fit$lower.ci, upper.ci = fit$upper.ci
   ),
   data.frame(
-    Month = fit2$time, Hazard = fit2$hazard, Treatment = "Experimental",
+    Month = fit2$time, Hazard = fit2$hazard,
+    Treatment = "Experimental",
     lower.ci = fit2$lower.ci, upper.ci = fit2$upper.ci
   )
 )
 
 ggplot(haz, aes(Month)) +
   geom_line(aes(y = Hazard, col = Treatment)) +
-  geom_ribbon(aes(ymin = lower.ci, ymax = upper.ci, fill = Treatment), alpha = 0.2, linetype = 0) +
-  scale_x_continuous(breaks = (0:5) * 6) +
+  geom_ribbon(
+    aes(ymin = lower.ci, ymax = upper.ci, fill = Treatment),
+    alpha = 0.2, linetype = 0
+  ) +
+  scale_x_continuous(
+    breaks = seq(0, 27, 3),
+    minor_breaks = seq(0, 27, 1)
+  ) +
+  geom_segment(
+    aes(x = 5.55, y = 0, xend = 5.55, yend = 0.065),
+    linetype = 2, color = pal_gray, linewidth = 0.5
+  ) +
+  geom_segment(
+    aes(x = 0, y = 0.065, xend = 5.55, yend = 0.065),
+    linetype = 2, color = pal_gray, linewidth = 0.5
+  ) +
   ylab("Hazard rate") +
   ylim(0, 0.1) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  guides(x = guide_axis(minor.ticks = TRUE))
 ```
 
 ### Compare smoothed to actual survival function
@@ -140,6 +187,8 @@ suggesting a different interpretation of when an excess risk period ends
 for the experimental group compared to the control.
 
 ```{r}
+#| smoothed-vs-km-survival-estimates,
+#| fig.cap="Comparison of smoothed survival estimates and Kaplan-Meier survival curves. The smoothed survival curves (dashed lines) closely match the Kaplan-Meier estimates (solid lines), validating the smoothing approach."
 # Get a smoothed survival estimate
 pl2 <- haz |>
   group_by(Treatment) |>
@@ -160,9 +209,15 @@ km <- p$data |>
   )
 
 # Combine and plot
-ggplot(bind_rows(pl2, km), aes(x = Month, y = Survival, col = Treatment, lty = Estimate)) +
+ggplot(
+  bind_rows(pl2, km),
+  aes(x = Month, y = Survival, col = Treatment, lty = Estimate)
+) +
   geom_line() +
-  scale_x_continuous(breaks = (0:6) * 6) +
+  scale_x_continuous(
+    breaks = seq(0, 27, 3),
+    minor_breaks = seq(0, 27, 1)
+  ) +
   ylab("Survival") +
   ggtitle("Smoothed vs. Kaplan-Meier Survival Estimates") +
   theme(
@@ -170,31 +225,40 @@ ggplot(bind_rows(pl2, km), aes(x = Month, y = Survival, col = Treatment, lty = E
     legend.title = element_text(size = 11),
     legend.text = element_text(size = 11)
   ) +
-  guides(color = guide_legend(order = 1), linetype = guide_legend(order = 2))
+  guides(
+    color = guide_legend(order = 1),
+    linetype = guide_legend(order = 2),
+    x = guide_axis(minor.ticks = TRUE)
+  )
 ```
 
 The following example draws the Kaplan-Meier curve as a step function.
 
 ```{r}
+#| km-step-functions-with-smoothed-survival,
+#| fig.cap="Kaplan-Meier survival curves displayed as step functions (solid lines) with smoothed survival estimates (dashed lines)."
 pl |>
   ggsurvfit(theme = cowplot::theme_cowplot()) +
-  scale_x_continuous(breaks = seq(0, 27, 3)) +
+  scale_x_continuous(
+    breaks = seq(0, 27, 3),
+    minor_breaks = seq(0, 27, 1)
+  ) +
   geom_line(
     data = pl2 |> filter(Treatment == "Experimental"),
     aes(x = Month, y = Survival),
-    col = pal[2], linetype = "dashed", inherit.aes = FALSE
+    col = pal_expt, linetype = "dashed", inherit.aes = FALSE
   ) +
   geom_line(
     data = pl2 |> filter(Treatment == "Control"),
     aes(x = Month, y = Survival),
-    col = pal[1], linetype = "dashed", inherit.aes = FALSE
+    col = pal_ctrl, linetype = "dashed", inherit.aes = FALSE
   ) +
   theme(
     legend.position = "bottom",
     legend.title = element_text(size = 11),
     legend.text = element_text(size = 11)
   ) +
-  scale_color_discrete(labels = c("Control", "Treatment")) +
+  scale_color_discrete(labels = c("Control", "Experimental")) +
   ggtitle("Smoothed vs. Kaplan-Meier Survival Estimates") +
   xlab("Month") +
   ylab("Survival") +
@@ -207,15 +271,16 @@ pl |>
     aes(x = x, y = y, linetype = Estimate), inherit.aes = FALSE
   ) +
   guides(
-    color = guide_legend(title = "Treatment"),
-    linetype = guide_legend(title = "Estimate")
+    color = guide_legend(title = "Treatment", order = 1),
+    linetype = guide_legend(title = "Estimate", order = 2),
+    x = guide_axis(minor.ticks = TRUE)
   )
 ```
 
 ## Session info
 
 ```{r, echo=FALSE}
-pkgs <- sessioninfo::session_info(info = "packages")
+pkgs <- sessioninfo::session_info(pkgs = "attached", info = "packages")
 pkgs$packages$library <- NULL
 pkgs
 ```
