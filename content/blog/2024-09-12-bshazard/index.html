@@ -83,6 +83,7 @@ p &lt;- pl |&gt;
     minor_breaks = seq(0, 27, 1)
   ) +
   add_risktable(risktable_stats = &quot;n.risk&quot;) +
+  add_risktable_strata_symbol(symbol = &quot;\U25CF&quot;, size = 16) +
   theme(legend.position = &quot;bottom&quot;) +
   scale_color_discrete(labels = c(&quot;Control&quot;, &quot;Experimental&quot;)) +
   guides(x = guide_axis(minor.ticks = TRUE))

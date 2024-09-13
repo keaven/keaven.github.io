@@ -105,6 +105,7 @@ p <- pl |>
     minor_breaks = seq(0, 27, 1)
   ) +
   add_risktable(risktable_stats = "n.risk") +
+  add_risktable_strata_symbol(symbol = "\U25CF", size = 16) +
   theme(legend.position = "bottom") +
   scale_color_discrete(labels = c("Control", "Experimental")) +
   guides(x = guide_axis(minor.ticks = TRUE))
