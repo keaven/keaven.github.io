@@ -13,7 +13,7 @@
       <link>https://keaven.github.io/blog/bshazard/</link>
       <pubDate>Thu, 12 Sep 2024 00:00:00 +0000</pubDate>
       <guid>https://keaven.github.io/blog/bshazard/</guid>
-      <description>Introduction The R package bshazard (Rebora, Salim, and Reilly 2014) has been available on CRAN since 2014. It might be useful where there is interest in where smoothed hazard rates cross. When there is excess in one arm early and excess in the other arm late, the time at which (smoothed) hazard rates cross can come well before the time when Kaplan-Meier survival curves cross. The time at which hazard rates cross is probably a more important demarcation for the period of early excess risk than the time at which survival curves cross.</description>
+      <description>National Aquarium Denmark, Den Blå Planet. Photo by Sandro Katalina. Introduction The R package bshazard (Rebora, Salim, and Reilly 2014) has been available on CRAN since 2014. It might be useful where there is interest in where smoothed hazard rates cross. When there is excess in one arm early and excess in the other arm late, the time at which (smoothed) hazard rates cross can come well before the time when Kaplan-Meier survival curves cross.</description>
     </item>
     <item>
       <title>simtrial is on CRAN</title>
