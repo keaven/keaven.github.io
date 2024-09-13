@@ -230,8 +230,8 @@ ggplot(
   ggtitle("Smoothed vs. Kaplan-Meier Survival Estimates") +
   theme(
     legend.position = "bottom",
-    legend.title = element_text(size = 11),
-    legend.text = element_text(size = 11)
+    legend.title = element_text(size = 8),
+    legend.text = element_text(size = 8)
   ) +
   guides(
     color = guide_legend(order = 1),
@@ -263,8 +263,8 @@ pl |>
   ) +
   theme(
     legend.position = "bottom",
-    legend.title = element_text(size = 11),
-    legend.text = element_text(size = 11)
+    legend.title = element_text(size = 8),
+    legend.text = element_text(size = 8)
   ) +
   scale_color_discrete(labels = c("Control", "Experimental")) +
   ggtitle("Smoothed vs. Kaplan-Meier Survival Estimates") +
