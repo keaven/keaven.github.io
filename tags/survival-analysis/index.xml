@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>simtrial on Keaven M. Anderson</title>
-    <link>https://keaven.github.io/tags/simtrial/</link>
-    <description>Recent content in simtrial on Keaven M. Anderson</description>
+    <title>survival analysis on Keaven M. Anderson</title>
+    <link>https://keaven.github.io/tags/survival-analysis/</link>
+    <description>Recent content in survival analysis on Keaven M. Anderson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 12 Sep 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://keaven.github.io/tags/simtrial/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://keaven.github.io/tags/survival-analysis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Smoothing hazard rates and survival curves with bshazard</title>
       <link>https://keaven.github.io/blog/bshazard/</link>
       <pubDate>Thu, 12 Sep 2024 00:00:00 +0000</pubDate>
       <guid>https://keaven.github.io/blog/bshazard/</guid>
       <description>Introduction The R package bshazard (Rebora, Salim, and Reilly 2014) has been available on CRAN since 2014. It might be useful where there is interest in where smoothed hazard rates cross. When there is excess in one arm early and excess in the other arm late, the time at which (smoothed) hazard rates cross can come well before the time when Kaplan-Meier survival curves cross. The time at which hazard rates cross is probably a more important demarcation for the period of early excess risk than the time at which survival curves cross.</description>
-    </item>
-    <item>
-      <title>simtrial is on CRAN</title>
-      <link>https://keaven.github.io/blog/simtrial-0-3-2/</link>
-      <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>https://keaven.github.io/blog/simtrial-0-3-2/</guid>
-      <description>We are excited to announce the first release of simtrial on CRAN. simtrial is a fast and extensible clinical trial simulation framework for time-to-event endpoints.&#xA;You can install simtrial from CRAN with:&#xA;install.packages(&amp;quot;simtrial&amp;quot;) A clinical trial simulation framework simtrial is intended to be a general purpose tool for simulating fixed, group sequential, or adaptive clinical trials. There are several design principles for the framework to create a coherent workflow while allowing maximum flexibility:</description>
     </item>
   </channel>
 </rss>
