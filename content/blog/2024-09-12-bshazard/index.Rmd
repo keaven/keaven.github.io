@@ -31,6 +31,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+<p></p>
+
+![National Aquarium Denmark, Den Blå Planet. Photo by [Sandro Katalina](https://unsplash.com/photos/sRaRlaFQolw).](images/sandro-katalina-sRaRlaFQolw-unsplash.jpg)
+
 ## Introduction
 
 The R package [bshazard](https://cran.r-project.org/package=bshazard)
