@@ -10,6 +10,7 @@ tags:
 description: >
     gsDesign2 1.1.1 brings RTF table output, performance improvements, and more
     to this R package for non-proportional hazards group sequential design.
+meta_img: "images/gsDesign2-banner.png"
 ---
 
 ```{r setup, include=FALSE}
