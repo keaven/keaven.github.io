@@ -4,12 +4,10 @@
 
 {{ if eq .RelPermalink "/" }}
 <title>{{ .Site.Title }}</title>
-<meta property="og:title" content="{{ .Site.Title }}">
-<meta property="og:type" content="website">
 {{ else }}
 <title>{{ .Title }}{{ with .Params.subtitle }} - {{ . }} {{ end }} - {{ .Site.Title }}</title>
-<meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
 {{ end }}
+
 {{ with .Site.Params.favicon }}
   <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
 {{ end }}
@@ -26,9 +24,30 @@
 <meta property="keywords" content ="{{ delimit .Keywords ", " }}">
 {{ end }}
 
+<meta property="og:title" content="{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
+<meta property="og:description" content="{{ .Description | default .Site.Params.description }}">
+<meta property="og:url" content="{{ .Permalink }}">
+{{ $defaultImage := print "images/" .Site.Params.logo.url | absURL }}
+{{ $pageImage := $defaultImage }}
+{{ if .Params.meta_img }}
+  {{ $image := .Resources.GetMatch .Params.meta_img }}
+  {{ if $image }}
+    {{ $pageImage = $image.Permalink }}
+  {{ else }}
+    {{ $pageImage = .Params.meta_img | absURL }}
+  {{ end }}
+{{ end }}
+<meta property="og:image" content="{{ $pageImage }}">
+{{ if eq .RelPermalink "/" }}
+<meta property="og:type" content="website">
+{{ else }}
+<meta property="og:type" content="article">
+{{ end }}
+
 {{ with .OutputFormats.Get "RSS" }}
 <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
 {{ end }}
+
 {{ partial "head_highlightjs" . }}
 <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}" media="all">
 <link rel="stylesheet" href="{{ "css/main.css" | relURL }}" media="all">
@@ -36,4 +55,5 @@
 {{ range .Site.Params.customCSS }}
 <link rel="stylesheet" href="{{ . | relURL }}">
 {{ end }}
+
 {{ partial "head_custom" . }}
