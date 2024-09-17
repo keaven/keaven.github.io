@@ -36,6 +36,10 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 
   In _Biostatistics in Biopharmaceutical Research and Development: Clinical Trial Design, Volume 1_, Springer, 2024.
 
+- [Multiple Testing in Group Sequential Design](https://link.springer.com/book/9783031659478)
+
+  In _Biostatistics in Biopharmaceutical Research and Development: Clinical Trial Design, Volume 1_, Springer, 2024.
+
 - [Sample Size Estimation and Power Analysis: Time to Event Data](https://doi.org/10.1201/9781315119694)
 
   In _Handbook of Statistical Methods for Randomized Controlled Trials_, Chapman and Hall/CRC, 2021.
