@@ -19,7 +19,8 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 
   [rinpharma mirror](https://rinpharma.shinyapps.io/gsdesign/) |
   [gsdesign mirror](https://gsdesign.shinyapps.io/prod/) |
-  [Documentation](https://keaven.github.io/gsd-shiny/)
+  [Documentation](https://keaven.github.io/gsd-shiny/)\
+  [Video - The gsDesign Shiny app for clinical trial design (R/Pharma 2021)](https://www.youtube.com/watch?v=8uZRuvzma9M)
 
 - **gsDesign2**: group sequential design under non-proportional hazards
 
