@@ -32,11 +32,7 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 
 ## Contributed book chapters
 
-- [Group Sequential Design Under Non-proportional Hazards: Methodologies and Examples](https://link.springer.com/book/9783031659478)
-
-  In _Biostatistics in Biopharmaceutical Research and Development: Clinical Trial Design, Volume 1_, Springer, 2024.
-
-- [Multiple Testing in Group Sequential Design](https://link.springer.com/book/9783031659478)
+- [Group Sequential Design Under Non-proportional Hazards: Methodologies and Examples](https://doi.org/10.1007/978-3-031-65948-5_8)
 
   In _Biostatistics in Biopharmaceutical Research and Development: Clinical Trial Design, Volume 1_, Springer, 2024.
 
