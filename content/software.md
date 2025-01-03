@@ -63,11 +63,20 @@ and research projects. Here are some highlights of how others have used them.
 
 - [Getting Started with impart](https://jbetz-jhu.github.io/impart/articles/impart.html)
 
-  The **gsDesign Explorer** book was referenced in the documentation of the R package impart.
+  **gsDesign Explorer** book was referenced by the R package impart.
+
+- [Protocol for the DISCHARGE trial](https://www.nejm.org/doi/suppl/10.1056/NEJMoa2200963/suppl_file/nejmoa2200963_protocol.pdf)
+
+  **gsDesign** was used to estimate sample size for a group sequential design.
 
 - [Reverse Engineering the Statistical Analyses in the Moderna Protocol](https://medium.com/@yipeng_39244/reverse-engineering-the-statistical-analyses-in-the-moderna-protocol-2c9fd7544326)
 
   **gsDesign** was used to replicate the trial design.
+
+- [Protocol mRNA-1273-P301](https://www.nejm.org/doi/suppl/10.1056/NEJMoa2035389/suppl_file/nejmoa2035389_protocol.pdf)
+
+  **gsDesign** was used to calculate sample size required to demonstrate
+  efficacy and plot boundary crossing probabilities by effect size.
 
 ## Archived
 
