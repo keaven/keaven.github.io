@@ -56,6 +56,19 @@ ul { padding-inline-start: 0px; list-style-type: none; }
   [GitHub](https://github.com/Merck/pkglite) |
   [Documentation](https://merck.github.io/pkglite/)
 
+## Featured in
+
+My software has been applied and recognized in other software, publications,
+and research projects. Here are some highlights of how others have used them.
+
+- [Getting Started with impart](https://jbetz-jhu.github.io/impart/articles/impart.html)
+
+  The **gsDesign Explorer** book was referenced in the documentation of the R package impart.
+
+- [Reverse Engineering the Statistical Analyses in the Moderna Protocol](https://medium.com/@yipeng_39244/reverse-engineering-the-statistical-analyses-in-the-moderna-protocol-2c9fd7544326)
+
+  **gsDesign** was used to replicate the trial design.
+
 ## Archived
 
 - **gsdmvn**: group sequential design with non-constant effect (merged into gsDesign2 as of June 2023)
