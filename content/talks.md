@@ -31,8 +31,15 @@ ul { padding-inline-start: 0px; list-style-type: none; }
   - R/Pharma Conference.
 - [The gsDesign Shiny app for clinical trial design](https://rinpharma.com/publication/rinpharma_246/) (talk)
   - R/Pharma Conference.
+- [Group Sequential Design Assuming Delayed Benefit](https://www.youtube.com/watch?v=DhwZOX5uMKU)
+  - Frontiers in Biostatistics Seminar, Dana-Farber Cancer Institute, Boston, MA.
 
 ## 2019
 
 - [Teaching an old dog new tricks: modernizing gsDesign](https://rinpharma.com/publication/rinpharma_72/)
   - R/Pharma Conference.
+
+## 2018
+
+- [Sample Size Calculation, Timing of Analysis, Interims, Follow-up](https://www.youtube.com/watch?v=npufYAHeoxk)
+  - Public Workshop: Oncology Clinical Trials in the Presence of Non-Proportional Hazards, Washington, DC.
