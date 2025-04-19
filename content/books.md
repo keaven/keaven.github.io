@@ -20,6 +20,11 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 
   Design and analyze group sequential trials with the R package gsDesign
 
+- [gsSurv Technical Manual](https://keaven.github.io/gsSurv/)
+
+  Sample size calculations for trials with time-to-event endpoints with
+  piecewise continuous entry, failure, and censoring rates.
+
 - [Group Sequential Design Under Non-Proportional Hazards](https://keaven.github.io/gsd-deming/)
 
   Deming Conference course on group sequential design, December 6, 2021
