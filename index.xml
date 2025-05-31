@@ -55,14 +55,14 @@
       <link>https://keaven.github.io/talks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://keaven.github.io/talks/</guid>
-      <description>2024 Design Software for Pivotal Trials Joint Statistical Meetings, Portland, OR. The 7th International Symposium on Biopharmaceutical Statistics, Baltimore, MD. 2022 Some industry trials over the last 30 years: personal experience and challenges 2022 ASA Biopharmaceutical Section Regulatory-Industry Statistics Workshop, Rockville, MD. Grammar of Group Sequential Design MCP Conference 2022: The 12th International Conference on Multiple Comparison Procedures, Bremen, Germany. Joint Statistical Meetings, Washington, DC. (recording) 2021 Group Sequential Design Under Non-Proportional Hazards (short course, slides).</description>
+      <description>2025 Design and simulation software for clinical trials NESS 2025: The 38th New England Statistics Symposium, New Haven, CT. 2024 Design Software for Pivotal Trials Joint Statistical Meetings, Portland, OR. The 7th International Symposium on Biopharmaceutical Statistics, Baltimore, MD. 2022 Some industry trials over the last 30 years: personal experience and challenges 2022 ASA Biopharmaceutical Section Regulatory-Industry Statistics Workshop, Rockville, MD. Grammar of Group Sequential Design MCP Conference 2022: The 12th International Conference on Multiple Comparison Procedures, Bremen, Germany.</description>
     </item>
     <item>
       <title>Software</title>
       <link>https://keaven.github.io/software/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://keaven.github.io/software/</guid>
-      <description>gsDesign: group sequential design&#xA;CRAN | GitHub | Documentation&#xA;Video - gsDesign: 15 Years of Development in 5 Minutes&#xA;gsDesign Explorer: group sequential design web interface&#xA;rinpharma mirror | gsdesign mirror | Documentation&#xA;Video - The gsDesign Shiny app for clinical trial design (R/Pharma 2021)&#xA;gsDesign2: group sequential design under non-proportional hazards&#xA;CRAN | GitHub | Documentation&#xA;simtrial: clinical trial simulation&#xA;CRAN | GitHub | Documentation&#xA;gMCPLite: lightweight graph-based multiple comparison procedures</description>
+      <description>gsDesign: group sequential design&#xA;CRAN | GitHub | Documentation&#xA;Video - gsDesign: 15 Years of Development in 5 Minutes&#xA;gsDesign Explorer: group sequential design web interface&#xA;rinpharma mirror | gsdesign mirror | Documentation&#xA;Video - The gsDesign Shiny app for clinical trial design (R/Pharma 2021)&#xA;gsDesign2: group sequential design under non-proportional hazards&#xA;CRAN | GitHub | Documentation&#xA;gsDesign2 Explorer: web interface for group sequential design under non-proportional hazards&#xA;rinpharma mirror</description>
     </item>
   </channel>
 </rss>
