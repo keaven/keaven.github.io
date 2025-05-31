@@ -7,6 +7,11 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 .article-content > ul > li { margin-bottom: 25px; }
 </style>
 
+## 2025
+
+- [Design and simulation software for clinical trials](#)
+  - NESS 2025: The 38th New England Statistics Symposium, New Haven, CT.
+
 ## 2024
 
 - [Design Software for Pivotal Trials](/talks/design-software-pivotal-trials/)
