@@ -28,6 +28,10 @@ ul { padding-inline-start: 0px; list-style-type: none; }
   [GitHub](https://github.com/merck/gsDesign2) |
   [Documentation](https://merck.github.io/gsDesign2/)
 
+- **gsDesign2 Explorer**: web interface for group sequential design under non-proportional hazards
+
+  [rinpharma mirror](https://rinpharma.shinyapps.io/gsdesign2/)
+
 - **simtrial**: clinical trial simulation
 
   [CRAN](https://cran.r-project.org/package=simtrial) |
