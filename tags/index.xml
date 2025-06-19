@@ -6,8 +6,50 @@
     <description>Recent content in Tags on Keaven M. Anderson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://keaven.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>delayed treatment effect</title>
+      <link>https://keaven.github.io/tags/delayed-treatment-effect/</link>
+      <pubDate>Thu, 19 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://keaven.github.io/tags/delayed-treatment-effect/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>group sequential design</title>
+      <link>https://keaven.github.io/tags/group-sequential-design/</link>
+      <pubDate>Thu, 19 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://keaven.github.io/tags/group-sequential-design/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>gsDesign2</title>
+      <link>https://keaven.github.io/tags/gsdesign2/</link>
+      <pubDate>Thu, 19 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://keaven.github.io/tags/gsdesign2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>non-proportional hazards</title>
+      <link>https://keaven.github.io/tags/non-proportional-hazards/</link>
+      <pubDate>Thu, 19 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://keaven.github.io/tags/non-proportional-hazards/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>simtrial</title>
+      <link>https://keaven.github.io/tags/simtrial/</link>
+      <pubDate>Thu, 19 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://keaven.github.io/tags/simtrial/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>time-to-event</title>
+      <link>https://keaven.github.io/tags/time-to-event/</link>
+      <pubDate>Thu, 19 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://keaven.github.io/tags/time-to-event/</guid>
+      <description></description>
+    </item>
     <item>
       <title>bshazard</title>
       <link>https://keaven.github.io/tags/bshazard/</link>
@@ -30,13 +72,6 @@
       <description></description>
     </item>
     <item>
-      <title>simtrial</title>
-      <link>https://keaven.github.io/tags/simtrial/</link>
-      <pubDate>Thu, 12 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>https://keaven.github.io/tags/simtrial/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>smoothing splines</title>
       <link>https://keaven.github.io/tags/smoothing-splines/</link>
       <pubDate>Thu, 12 Sep 2024 00:00:00 +0000</pubDate>
@@ -48,34 +83,6 @@
       <link>https://keaven.github.io/tags/survival-analysis/</link>
       <pubDate>Thu, 12 Sep 2024 00:00:00 +0000</pubDate>
       <guid>https://keaven.github.io/tags/survival-analysis/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>time-to-event</title>
-      <link>https://keaven.github.io/tags/time-to-event/</link>
-      <pubDate>Thu, 12 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>https://keaven.github.io/tags/time-to-event/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>group sequential design</title>
-      <link>https://keaven.github.io/tags/group-sequential-design/</link>
-      <pubDate>Mon, 12 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>https://keaven.github.io/tags/group-sequential-design/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>gsDesign2</title>
-      <link>https://keaven.github.io/tags/gsdesign2/</link>
-      <pubDate>Mon, 12 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>https://keaven.github.io/tags/gsdesign2/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>non-proportional hazards</title>
-      <link>https://keaven.github.io/tags/non-proportional-hazards/</link>
-      <pubDate>Mon, 12 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>https://keaven.github.io/tags/non-proportional-hazards/</guid>
       <description></description>
     </item>
     <item>
