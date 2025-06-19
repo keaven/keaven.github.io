@@ -458,3 +458,8 @@ pre code {
     box-shadow: none;
   }
 }
+
+/* Reference section in blog posts */
+.references .csl-entry {
+  margin-bottom: 15px;
+}
