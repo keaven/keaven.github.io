@@ -9,6 +9,10 @@
 
     <h1 class="article-title">{{ .Title }}</h1>
 
+    {{ if .Params.subtitle }}
+    <h2 class="article-subtitle">{{ .Params.subtitle }}</h2>
+    {{ end }}
+
     {{ if eq .Section "blog" }}
     {{ if not .Params.noauthor }}
     {{ if .Params.author }}
