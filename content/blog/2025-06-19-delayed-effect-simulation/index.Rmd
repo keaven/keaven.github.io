@@ -569,9 +569,7 @@ mb_design <- gs_power_wlr(
   fail_rate = xx$fail_rate,
   analysis_time = xx$analysis$time,
   # Magirr-Burman weighting for MWLR
-  weight = function(x, arm0, arm1) {
-    wlr_weight_mb(x, arm0, arm1, tau = NULL, w_max = 2)
-  },
+  weight = list(method = "mb", param = list(tau = NULL, w_max = 2)),
   upper = gs_spending_bound,
   upar = upar_design,
   lpar = rep(-Inf, 3),
@@ -612,9 +610,7 @@ mb_design <- gs_power_wlr(
   fail_rate = xx$fail_rate,
   analysis_time = xx$analysis$time,
   # Magirr-Burman weighting for MWLR
-  weight = function(x, arm0, arm1) {
-    wlr_weight_mb(x, arm0, arm1, tau = NULL, w_max = 2)
-  },
+  weight = list(method = "mb", param = list(tau = NULL, w_max = 2)),
   upper = gs_spending_bound,
   upar = list(
     sf = gsDesign::sfLDOF, total_spend = alpha,
