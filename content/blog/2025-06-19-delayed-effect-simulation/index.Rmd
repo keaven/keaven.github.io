@@ -40,6 +40,12 @@ knitr::opts_chunk$set(
 ![Expect delays. Photo by [Erik Mclean
 ](https://unsplash.com/photos/7lyRKyKIdJY).](images/erik-mclean-7lyRKyKIdJY-unsplash.jpg)
 
+::: {.callout}
+**Update (2025-06-27):** The way to specify weights for WLR designs
+has changed to match the new syntax in gsDesign2 1.1.4,
+which is now used to render this post.
+:::
+
 ## Overview
 
 We consider asymptotic approximations and corresponding simulations for
@@ -569,9 +575,7 @@ mb_design <- gs_power_wlr(
   fail_rate = xx$fail_rate,
   analysis_time = xx$analysis$time,
   # Magirr-Burman weighting for MWLR
-  weight = function(x, arm0, arm1) {
-    wlr_weight_mb(x, arm0, arm1, tau = NULL, w_max = 2)
-  },
+  weight = list(method = "mb", param = list(tau = NULL, w_max = 2)),
   upper = gs_spending_bound,
   upar = upar_design,
   lpar = rep(-Inf, 3),
@@ -612,9 +616,7 @@ mb_design <- gs_power_wlr(
   fail_rate = xx$fail_rate,
   analysis_time = xx$analysis$time,
   # Magirr-Burman weighting for MWLR
-  weight = function(x, arm0, arm1) {
-    wlr_weight_mb(x, arm0, arm1, tau = NULL, w_max = 2)
-  },
+  weight = list(method = "mb", param = list(tau = NULL, w_max = 2)),
   upper = gs_spending_bound,
   upar = list(
     sf = gsDesign::sfLDOF, total_spend = alpha,
