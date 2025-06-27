@@ -40,6 +40,12 @@ knitr::opts_chunk$set(
 ![Expect delays. Photo by [Erik Mclean
 ](https://unsplash.com/photos/7lyRKyKIdJY).](images/erik-mclean-7lyRKyKIdJY-unsplash.jpg)
 
+::: {.callout}
+**Update (2025-06-27):** The way to specify weights for WLR designs
+has changed to match the new syntax in gsDesign2 1.1.4,
+which is now used to render this post.
+:::
+
 ## Overview
 
 We consider asymptotic approximations and corresponding simulations for

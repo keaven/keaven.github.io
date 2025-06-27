@@ -271,6 +271,21 @@ p.tags a:focus {
   background: #e5e5e5;
 }
 
+.article-content .callout p {
+  font-size: 1rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 0.25rem;
+  border-left: 5px solid #CBF8DF;
+  border-right: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
 .highlight {
   border-radius: 3px;
   position: relative;
