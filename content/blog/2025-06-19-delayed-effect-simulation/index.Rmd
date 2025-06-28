@@ -125,7 +125,7 @@ run_simulations <- TRUE
 Set up parallel computing.
 
 ```{r}
-cores_used <- 32
+cores_used <- 16
 message("Parallelizing across ", cores_used, " CPUs")
 
 # Set up the future plan to use the specified number of parallel workers
@@ -138,7 +138,7 @@ Set seed and number of simulations.
 # Set a seed for reproducibility and use `.options.future = list(seed = TRUE)`
 # for parallel-safe RNG. Use foreach + %dofuture% to perform parallel computation.
 set.seed(42)
-nsim <- 100000
+nsim <- 100
 ```
 
 ## Design assumptions
@@ -593,55 +593,10 @@ mb_design |>
   )
 ```
 
-We note that the $\alpha$-spending at the first analysis should be:
+We check that the cumulative $\alpha$-spending at each analysis is as expected:
 
 ```{r}
 sfLDOF(alpha = 0.025, t = mb_design$analysis$info_frac0)$spend
-```
-
-rather than
-
-```{r}
-ev <- mb_design$analysis$event
-sfLDOF(alpha = 0.025, t = ev / max(ev))$spend
-```
-
-We change to information fraction spending for the MWLR test by using
-`info_frac0` from the above in the `upar` list.
-We see that this defers more spending to later analyses and increases power a bit more.
-
-```{r}
-mb_design <- gs_power_wlr(
-  enroll_rate = xx$enroll_rate,
-  fail_rate = xx$fail_rate,
-  analysis_time = xx$analysis$time,
-  # Magirr-Burman weighting for MWLR
-  weight = list(method = "mb", param = list(tau = NULL, w_max = 2)),
-  upper = gs_spending_bound,
-  upar = list(
-    sf = gsDesign::sfLDOF, total_spend = alpha,
-    timing = mb_design$analysis$info_frac0
-  ),
-  lpar = rep(-Inf, 3),
-  lower = gs_b,
-  test_lower = FALSE
-) |> to_integer()
-```
-
-```{r}
-mb_design |>
-  summary() |>
-  as_gt(
-    title = "Group sequential design based on original assumptions",
-    subtitle = "Table 6: Testing with MWLR using maximum weight of 2, IF spending"
-  )
-```
-
-We check the cumulative spending above with the spending function and
-information fraction to confirm that we have used information-fraction-based spending.
-
-```{r}
-sfLDOF(alpha = 0.025, t = mb_design$analysis$info_frac0)$spend |> round(4)
 ```
 
 ## Accumulation of events and average treatment effect over time
