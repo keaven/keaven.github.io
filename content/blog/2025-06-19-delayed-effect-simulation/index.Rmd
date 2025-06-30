@@ -203,7 +203,7 @@ scenarios |>
 
 ```{r}
 # Fixed design, single stratum
-# Find sample size for 30 month trial under given
+# Find sample size for 36 month trial under given
 # enrollment and sample size assumptions
 failRates <- define_fail_rate(
   duration = c(scenarios$Delay[1], 100),
@@ -351,7 +351,7 @@ The design has the following additional characteristics:
 - Sample size rounded to an even number, event counts rounded to the nearest
   integer for interim analyses and rounded up for the final analysis.
 
-Table 1 summarizes operating characteristics for the 3 scenarios with each of
+Table 2 summarizes operating characteristics for the 3 scenarios with each of
 the analysis timing methods.
 For event-based timing, the second scenario is more poorly powered than for
 calendar-based timing.
@@ -398,13 +398,12 @@ output |>
 
 We use simulation to verify the power approximations above as well as whether
 Type I error is controlled at the targeted one-sided 2.5%.
-Table 2 shows that with $`r nsim`$ simulated trials, the computations from Table 1
+Table 3 shows that with $`r nsim`$ simulated trials, the computations from Table 2
 provide good approximations.
 The `SE(Power)` provides the standard error for the simulation power approximation
 for each scenario as a measure of accuracy.
 The average in the HR column is the geometric average of the Cox regression
 estimate of the hazard ratio.
-We see that this average closely approximates the AHR values in Table 1.
 
 ```{r}
 if (run_simulations) {
@@ -509,7 +508,7 @@ failRates <- define_fail_rate(
   dropout_rate = dropoutRate
 )
 upar_design <- list(sf = gsDesign::sfLDOF, total_spend = alpha)
-# Find sample size for 30 month trial under given
+# Find sample size for 36 month trial under given
 # enrollment and sample size assumptions
 # Interim at planned information fraction
 xx <- gs_design_ahr(
@@ -622,7 +621,7 @@ enroll_rate_scenarios <- rbind(
 enroll_rate_scenarios |>
   select(-stratum) |>
   gt() |>
-  tab_header(title = "Table 7: Enrollment rate scenarios") |>
+  tab_header(title = "Table 6: Enrollment rate scenarios") |>
   fmt_number(columns = "rate", decimals = 1) |>
   cols_label(
     duration = "Target duration (months)", rate = "Enrollment rate per month",
@@ -958,7 +957,7 @@ output |>
         )
       ),
     filter = "top",
-    caption = "Table 8: Design characteristics by spending strategy across scenarios"
+    caption = "Table 7: Design characteristics by spending strategy across scenarios"
   ) |>
   formatRound(columns = c("N", "Events", "Time"), digits = 1) |>
   # formatRound(columns = c("Nominal p"), digits = 4) |>
@@ -1284,7 +1283,7 @@ output |>
       buttons = c("copy", "csv", "excel"), scrollX = TRUE
     ),
     filter = "top",
-    caption = paste("Table 9: Example output from a single trial simulation")
+    caption = paste("Table 8: Example output from a single trial simulation")
   ) |>
   formatRound(columns = c("Time", "info0", "info"), digits = 1) |>
   formatRound(columns = c("IF", "sTime", "Bound", "z"), digits = 2) |>
@@ -1413,7 +1412,7 @@ result_summary |>
       buttons = c("copy", "csv", "excel"), scrollX = TRUE
     ),
     filter = "top",
-    caption = paste("Table 10: Simulation results summary (based on", nsim, "simulations per scenario)")
+    caption = paste("Table 9: Simulation results summary (based on", nsim, "simulations per scenario)")
   ) |>
   formatRound(columns = c("E(Time)", "E(Events)"), digits = 1) |>
   formatRound(columns = c("E(Spend)", "Power"), digits = 4) |>
