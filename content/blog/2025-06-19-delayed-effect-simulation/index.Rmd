@@ -1437,7 +1437,7 @@ $(el).find('.dataTables_wrapper').css('width', 'auto');
 power_summary <- result_summary |>
   group_by(Scenario, test, Cut, Spending) |>
   summarize(
-    Power = sum(Power),
+    Power = last(Power),
     Events = last(`E(Events)`),
     "Final spend" = last(`E(Spend)`)
   ) |>
