@@ -979,7 +979,7 @@ $(this).css('width', columnWidths[i] + 'px');
 ")
 ```
 
-Now we final design characteristics by spending strategy across scenarios.
+Now we summarize design characteristics by spending strategy across scenarios.
 We see that using the minimum of planned and actual spending retains the
 highest power across scenarios (A).
 If events accrue more slowly than planned,
