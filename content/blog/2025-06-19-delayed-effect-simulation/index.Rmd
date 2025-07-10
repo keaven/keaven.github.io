@@ -41,6 +41,9 @@ knitr::opts_chunk$set(
 ](https://unsplash.com/photos/7lyRKyKIdJY).](images/erik-mclean-7lyRKyKIdJY-unsplash.jpg)
 
 ::: {.callout}
+**Update (2025-07-10):** Minor edits to compute cumulative power by analysis
+and correct table numbering. Render with gsDesign2 1.1.5 and simtrial 1.0.0.
+
 **Update (2025-06-27):** The way to specify weights for WLR designs
 has changed to match the new syntax in gsDesign2 1.1.4,
 which is now used to render this post.
@@ -125,7 +128,7 @@ run_simulations <- TRUE
 Set up parallel computing.
 
 ```{r}
-cores_used <- 16
+cores_used <- 32
 message("Parallelizing across ", cores_used, " CPUs")
 
 # Set up the future plan to use the specified number of parallel workers
@@ -138,7 +141,7 @@ Set seed and number of simulations.
 # Set a seed for reproducibility and use `.options.future = list(seed = TRUE)`
 # for parallel-safe RNG. Use foreach + %dofuture% to perform parallel computation.
 set.seed(42)
-nsim <- 100
+nsim <- 100000
 ```
 
 ## Design assumptions
@@ -1392,7 +1395,7 @@ for (i in 1:5) {
         group_by(test, Cut, Spending) |>
         arrange(Analysis, .by_group = TRUE) |>
         mutate(Power = cumsum(Power), Scenario = scenarios$Scenario[i])
-  ) 
+  )
 }
 
 # Display results
