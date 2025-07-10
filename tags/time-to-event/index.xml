@@ -13,7 +13,7 @@
       <link>https://keaven.github.io/blog/delayed-effect-simulation/</link>
       <pubDate>Thu, 19 Jun 2025 00:00:00 +0000</pubDate>
       <guid>https://keaven.github.io/blog/delayed-effect-simulation/</guid>
-      <description>Overview&#xD;Computing preliminaries&#xD;Design assumptions&#xD;Fixed design&#xD;Simulation of fixed design&#xD;Group sequential design&#xD;Same design with weighted logrank&#xD;Accumulation of events and average treatment effect over time&#xD;Alternate analysis timing and \(\alpha\)-spending strategies&#xD;Simulation to verify operating characteristics&#xD;Simulate a single trial and perform tests&#xD;Simulate multiple trials in parallel&#xD;Summary&#xD;Session info&#xD;References&#xD;Expect delays. Photo by Erik Mclean.&#xD;Update (2025-06-27): The way to specify weights for WLR designs&#xD;has changed to match the new syntax in gsDesign2 1.</description>
+      <description>Overview&#xD;Computing preliminaries&#xD;Design assumptions&#xD;Fixed design&#xD;Simulation of fixed design&#xD;Group sequential design&#xD;Same design with weighted logrank&#xD;Accumulation of events and average treatment effect over time&#xD;Alternate analysis timing and \(\alpha\)-spending strategies&#xD;Simulation to verify operating characteristics&#xD;Simulate a single trial and perform tests&#xD;Simulate multiple trials in parallel&#xD;Summary&#xD;Session info&#xD;References&#xD;Expect delays. Photo by Erik Mclean.&#xD;Update (2025-07-10): Minor edits to compute cumulative power by analysis&#xD;and correct table numbering.</description>
     </item>
     <item>
       <title>Smoothing hazard rates and survival curves with bshazard</title>
