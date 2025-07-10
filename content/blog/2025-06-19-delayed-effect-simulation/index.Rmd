@@ -1391,10 +1391,10 @@ for (i in 1:5) {
         "E(IF)" = mean(IF),
         "E(sTime)" = mean(sTime)
       ) |>
-        ungroup() |>
-        group_by(test, Cut, Spending) |>
-        arrange(Analysis, .by_group = TRUE) |>
-        mutate(Power = cumsum(Power), Scenario = scenarios$Scenario[i])
+      ungroup() |>
+      group_by(test, Cut, Spending) |>
+      arrange(Analysis, .by_group = TRUE) |>
+      mutate(Power = cumsum(Power), Scenario = scenarios$Scenario[i])
   )
 }
 
