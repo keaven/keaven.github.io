@@ -218,8 +218,8 @@ This independence assumption is required to use the usual asymptotic normal
 calculations for computing group sequential boundary crossing probabilities.
 As noted by <span class="citation">Michael A. Proschan, Follmann, and Waclawiw (<a href="#ref-PFW">1992</a>)</span>, issues arising due to nefarious strategies when treatment
 differences are known at interim analysis can be largely limited
-by appropriate approaches
-we revisit these for the <span class="math inline">\(\alpha\)</span>-spending approach that we extend here and
+by appropriate approaches.
+We revisit these for the <span class="math inline">\(\alpha\)</span>-spending approach that we extend here and
 the fixed interim <span class="math inline">\(\alpha\)</span>-spending method of <span class="citation">Fleming, Harrington, and O’Brien (<a href="#ref-FHO">1984</a>)</span>.
 Asymptotic distribution theory is always determined by statistical information
 at analyses that information is proportional to event counts for the logrank test.
@@ -265,7 +265,7 @@ nsim &lt;- 100000</code></pre>
 <p>We begin with assumptions for the group sequential design as well as for
 alternate scenarios.
 The approach taken for the asymptotic normal approximation for the logrank test
-uses an average hazard ratio approach for approximating treatment effect <span class="citation">Mukhopadhyay et al. (<a href="#ref-AHR2020">2020</a>)</span>.
+uses an average hazard ratio approach for approximating treatment effect (<span class="citation">Mukhopadhyay et al. (<a href="#ref-AHR2020">2020</a>)</span>).
 When group sequential analyses are performed, we justify the joint distribution
 of logrank tests by the theory of <span class="citation">Tsiatis (<a href="#ref-Tsiatis1982">1982</a>)</span>.
 Simulations are easily run for each scenario to verify asymptotic approximations
@@ -443,13 +443,13 @@ for (i in 1:nrow(scenarios)) {
 <p>A sample size of 422 and 312 targeted events was derived
 based on Scenario 1 assumptions using the method of <span class="citation">Zhao, Zhang, and Anderson (<a href="#ref-zhao2024group">2024</a>)</span>.
 This method computes an average hazard ratio at the time of analysis that approximates
-what is produced by a Cox regression model
-we will verify this below using simulated trials.
+what is produced by a Cox regression model.
+We will verify this below using simulated trials.
 The design has the following additional characteristics:</p>
 <ul>
 <li>An exponential dropout rate of 0.001 in both treatment groups.</li>
-<li>A constant random enrollment rate is planned for 12 months piecewise constant
-enrollment is also an option in the software.</li>
+<li>A constant random enrollment rate is planned for 12 months;
+piecewise constant enrollment is also an option in the software.</li>
 <li>Sample size rounded up to an even number.</li>
 <li>Targeted events rounded up to an integer.</li>
 <li>Planned analysis time at 36 months.</li>
@@ -1199,7 +1199,7 @@ estimate of the hazard ratio.</p>
 } else {
   load(&quot;FixedDesignSimulation.RData&quot;)
 }</code></pre>
-<pre><code>#&gt; Fixed design simulation duration for 1e+05 simulated trials: 819 sec elapsed</code></pre>
+<pre><code>#&gt; Fixed design simulation duration for 1e+05 simulated trials: 830.2 sec elapsed</code></pre>
 <pre class="r"><code>sim_summary |&gt;
   transmute(
     Scenario = factor(Scenario),
@@ -1247,7 +1247,7 @@ piecewise constant enrollment is also an option in the software.</li>
 <li>Planned analysis times at 20, 28, and 36 months.</li>
 <li>Spending is based on the information fraction at the planned analysis times
 using a Lan-DeMets spending function to approximate the O’Brien-Fleming spending function.</li>
-<li>One-sided testing only no futility bound.</li>
+<li>One-sided testing only; no futility bound.</li>
 <li>Sample size rounded to an even number, event counts rounded to the
 nearest integer for interim analyses and rounded up for the final analysis.</li>
 </ul>
@@ -1290,7 +1290,7 @@ the final analysis as indicated by the cumulative power of 0.35 at the
 first interim analysis and 0.75 at the second. We see that the expected
 geometric mean of the observed hazard ratio (AHR) decreases from 0.74 at
 the first interim to 0.71 at the second, and 0.69 at the final analysis.
-Thus, the longer the trial continues, the strong the expected treatment effect is.
+Thus, the longer the trial continues, the stronger the expected treatment effect is.
 We will see that continuing the trial long enough for the expected
 treatment effect to be strong is important in the scenarios that follow.</p>
 <pre class="r"><code>xx |&gt;
@@ -3566,7 +3566,7 @@ set.seed(42)</code></pre>
 } else {
   load(&quot;DelayedEffectSimulation.RData&quot;)
 }</code></pre>
-<pre><code>#&gt; Total simulation time: 792.51 sec elapsed</code></pre>
+<pre><code>#&gt; Total simulation time: 779.94 sec elapsed</code></pre>
 <p>We wish to mimic asymptotic approximations with appropriate simulations
 for each scenario and analysis for: Spending, Events, Time, Power,
 AHR (later!), IF, and Spending time.</p>
@@ -3585,10 +3585,10 @@ for (i in 1:5) {
         &quot;E(IF)&quot; = mean(IF),
         &quot;E(sTime)&quot; = mean(sTime)
       ) |&gt;
-        ungroup() |&gt;
-        group_by(test, Cut, Spending) |&gt;
-        arrange(Analysis, .by_group = TRUE) |&gt;
-        mutate(Power = cumsum(Power), Scenario = scenarios$Scenario[i])
+      ungroup() |&gt;
+      group_by(test, Cut, Spending) |&gt;
+      arrange(Analysis, .by_group = TRUE) |&gt;
+      mutate(Power = cumsum(Power), Scenario = scenarios$Scenario[i])
   )
 }
 
@@ -3715,12 +3715,12 @@ separately for PFS and OS in a way that adapts simply for all hypotheses tested.
 This includes the ability to use multiple testing procedures such as the
 graphical method of <span class="citation">Maurer and Bretz (<a href="#ref-MaurerBretz2013">2013</a>)</span>.</li>
 </ul>
-<p>For the biomarker postive and overall population testing, adapting the overall
+<p>For the biomarker positive and overall population testing, adapting the overall
 sample size and spending based on enrolling the targeted biomarker positive
 sample size and spending according to events achieved in the biomarker subgroup
 for both population was effective at achieving targeted power and completing
 the trial in a timely fashion. The Fleming-Harrington-O’Brien spending approach
-mimicing Haybittle-Peto bounds was also effective at maintaining power and
+mimicking Haybittle-Peto bounds was also effective at maintaining power and
 controlling Type I error.
 Depending on whether or not you wish to be conservative for early stopping
 (Haybittle-Peto) or more liberal with early stopping (O’Brien-Fleming-like bound),
