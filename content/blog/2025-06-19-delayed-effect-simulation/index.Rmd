@@ -128,7 +128,7 @@ run_simulations <- TRUE
 Set up parallel computing.
 
 ```{r}
-cores_used <- 16
+cores_used <- 32
 message("Parallelizing across ", cores_used, " CPUs")
 
 # Set up the future plan to use the specified number of parallel workers
@@ -141,7 +141,7 @@ Set seed and number of simulations.
 # Set a seed for reproducibility and use `.options.future = list(seed = TRUE)`
 # for parallel-safe RNG. Use foreach + %dofuture% to perform parallel computation.
 set.seed(42)
-nsim <- 100
+nsim <- 100000
 ```
 
 ## Design assumptions
