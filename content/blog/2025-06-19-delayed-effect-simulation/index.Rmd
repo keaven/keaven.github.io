@@ -88,8 +88,8 @@ This independence assumption is required to use the usual asymptotic normal
 calculations for computing group sequential boundary crossing probabilities.
 As noted by @PFW, issues arising due to nefarious strategies when treatment
 differences are known at interim analysis can be largely limited
-by appropriate approaches
-we revisit these for the $\alpha$-spending approach that we extend here and
+by appropriate approaches.
+We revisit these for the $\alpha$-spending approach that we extend here and
 the fixed interim $\alpha$-spending method of @FHO.
 Asymptotic distribution theory is always determined by statistical information
 at analyses that information is proportional to event counts for the logrank test.
@@ -149,7 +149,7 @@ nsim <- 100000
 We begin with assumptions for the group sequential design as well as for
 alternate scenarios.
 The approach taken for the asymptotic normal approximation for the logrank test
-uses an average hazard ratio approach for approximating treatment effect @AHR2020.
+uses an average hazard ratio approach for approximating treatment effect (@AHR2020).
 When group sequential analyses are performed, we justify the joint distribution
 of logrank tests by the theory of @Tsiatis1982.
 Simulations are easily run for each scenario to verify asymptotic approximations
@@ -338,13 +338,13 @@ for (i in 1:nrow(scenarios)) {
 A sample size of `r output$N[1]` and `r output$Events[1]` targeted events was derived
 based on Scenario 1 assumptions using the method of @zhao2024group.
 This method computes an average hazard ratio at the time of analysis that approximates
-what is produced by a Cox regression model
-we will verify this below using simulated trials.
+what is produced by a Cox regression model.
+We will verify this below using simulated trials.
 The design has the following additional characteristics:
 
 - An exponential dropout rate of `r dropoutRate` in both treatment groups.
-- A constant random enrollment rate is planned for 12 months piecewise constant
-  enrollment is also an option in the software.
+- A constant random enrollment rate is planned for 12 months;
+  piecewise constant enrollment is also an option in the software.
 - Sample size rounded up to an even number.
 - Targeted events rounded up to an integer.
 - Planned analysis time at `r analysisTimes` months.
@@ -498,7 +498,7 @@ fixed design above.
 - Planned analysis times at 20, 28, and 36 months.
 - Spending is based on the information fraction at the planned analysis times
   using a Lan-DeMets spending function to approximate the O'Brien-Fleming spending function.
-- One-sided testing only no futility bound.
+- One-sided testing only; no futility bound.
 - Sample size rounded to an even number, event counts rounded to the
   nearest integer for interim analyses and rounded up for the final analysis.
 
@@ -544,7 +544,7 @@ the final analysis as indicated by the cumulative power of 0.35 at the
 first interim analysis and 0.75 at the second. We see that the expected
 geometric mean of the observed hazard ratio (AHR) decreases from 0.74 at
 the first interim to 0.71 at the second, and 0.69 at the final analysis.
-Thus, the longer the trial continues, the strong the expected treatment effect is.
+Thus, the longer the trial continues, the stronger the expected treatment effect is.
 We will see that continuing the trial long enough for the expected
 treatment effect to be strong is important in the scenarios that follow.
 
@@ -1521,12 +1521,12 @@ timing of final analysis is not premature.
   This includes the ability to use multiple testing procedures such as the
   graphical method of @MaurerBretz2013.
 
-For the biomarker postive and overall population testing, adapting the overall
+For the biomarker positive and overall population testing, adapting the overall
 sample size and spending based on enrolling the targeted biomarker positive
 sample size and spending according to events achieved in the biomarker subgroup
 for both population was effective at achieving targeted power and completing
 the trial in a timely fashion. The Fleming-Harrington-O'Brien spending approach
-mimicing Haybittle-Peto bounds was also effective at maintaining power and
+mimicking Haybittle-Peto bounds was also effective at maintaining power and
 controlling Type I error.
 Depending on whether or not you wish to be conservative for early stopping
 (Haybittle-Peto) or more liberal with early stopping (O'Brien-Fleming-like bound),
