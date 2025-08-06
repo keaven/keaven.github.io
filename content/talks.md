@@ -9,6 +9,8 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 
 ## 2025
 
+- [Conditional Power: The Good, The Bad (and The Ugly?) - Applications to Interim Analyses and Adaptation in Clinical Trials](/talks/jsm-2025-conditional-power.pdf)
+  - Joint Statistical Meetings, Nashville, TN.
 - [Design and simulation software for clinical trials](#)
   - NESS 2025: The 38th New England Statistics Symposium, New Haven, CT.
 
