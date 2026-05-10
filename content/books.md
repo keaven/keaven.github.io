@@ -10,7 +10,7 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 
 ## Clinical trial design
 
-- [Group Sequential Designs Made Easy: A Web Interface Handbook](https://keaven.github.io/gsd-shiny/)
+- [Group Sequential Design in R: A Practical Guide to the gsDesign Web Interface](https://keaven.github.io/gsd-shiny/)
 
   Learn how to use a web interface to design, explore, and optimize
   group sequential clinical trials leveraging the flexible capabilities of
