@@ -48,7 +48,7 @@
       <link>https://keaven.github.io/books/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://keaven.github.io/books/</guid>
-      <description>Clinical trial design Group Sequential Design in R: A Practical Guide to the gsDesign Web Interface&#xA;Learn how to use a web interface to design, explore, and optimize group sequential clinical trials leveraging the flexible capabilities of the R package gsDesign.&#xA;gsDesign Technical Manual&#xA;Design and analyze group sequential trials with the R package gsDesign&#xA;gsSurv Technical Manual&#xA;Sample size calculations for trials with time-to-event endpoints with piecewise continuous entry, failure, and censoring rates.</description>
+      <description>Clinical trial design Group Sequential Design in R: A Practical Guide to the gsDesign Web Interface&#xA;Learn how to use a web interface to design, explore, and optimize group sequential clinical trials leveraging the flexible capabilities of the R package gsDesign.&#xA;Springer, Use R! series, forthcoming 2026. Preprint version&#xA;gsDesign Technical Manual&#xA;Design and analyze group sequential trials with the R package gsDesign&#xA;gsSurv Technical Manual&#xA;Sample size calculations for trials with time-to-event endpoints with piecewise continuous entry, failure, and censoring rates.</description>
     </item>
     <item>
       <title>Publications</title>
