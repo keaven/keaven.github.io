@@ -10,14 +10,16 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 
 ## Clinical trial design
 
-- [Group Sequential Design in R: A Practical Guide to the gsDesign Web Interface](https://link.springer.com/book/9783032315892)
+- [Group Sequential Design in R: A Practical Guide to the gsDesign Web Interface](https://keaven.github.io/gsd-shiny/)
 
   Learn how to use a web interface to design, explore, and optimize
   group sequential clinical trials leveraging the flexible capabilities of
   the R package gsDesign.
 
   Springer, Use R! series, forthcoming 2026.
-  [Preprint version](https://keaven.github.io/gsd-shiny/)
+
+  [Preorder from Springer](https://link.springer.com/book/9783032315892) |
+  [Preorder on Amazon](https://www.amazon.com/dp/3032315891/)
 
 - [gsDesign Technical Manual](https://keaven.github.io/gsd-tech-manual/)
 
