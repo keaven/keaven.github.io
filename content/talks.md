@@ -7,6 +7,11 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 .article-content > ul > li { margin-bottom: 25px; }
 </style>
 
+## 2026
+
+- AI for group sequential oncology design with multiple hypotheses
+  - The 8th International Symposium on Biopharmaceutical Statistics, Madrid, Spain.
+
 ## 2025
 
 - [Conditional Power: The Good, The Bad (and The Ugly?) - Applications to Interim Analyses and Adaptation in Clinical Trials](/talks/jsm-2025-conditional-power.pdf)

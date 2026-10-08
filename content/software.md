@@ -38,6 +38,16 @@ ul { padding-inline-start: 0px; list-style-type: none; }
   [GitHub](https://github.com/merck/simtrial) |
   [Documentation](https://merck.github.io/simtrial/)
 
+- **gsDesignNB**: Sample size and simulation for negative binomial outcomes
+
+  [CRAN](https://cran.r-project.org/package=gsDesignNB) |
+  [GitHub](https://github.com/keaven/gsDesignNB) |
+  [Documentation](https://keaven.github.io/gsDesignNB/)
+
+- **gsDesignBroom**: Normalized and publication-ready summaries for group sequential designs
+
+  [GitHub](https://github.com/keaven/gsDesignBroom)
+
 - **gMCPLite**: lightweight graph-based multiple comparison procedures
 
   [CRAN](https://cran.r-project.org/package=gMCPLite) |
