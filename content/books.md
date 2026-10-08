@@ -42,6 +42,10 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 
 ## Contributed book chapters
 
+- [Estimands](https://doi.org/10.1007/978-981-95-9518-1_2)
+
+  In _Statistics in Clinical Development of Cancer Drugs: Recent Trends & Advances_, Springer, 2026.
+
 - [Group Sequential Design Under Non-proportional Hazards: Methodologies and Examples](https://doi.org/10.1007/978-3-031-65948-5_8)
 
   In _Biostatistics in Biopharmaceutical Research and Development: Clinical Trial Design, Volume 1_, Springer, 2024.
