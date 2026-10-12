@@ -11,6 +11,8 @@ ul { padding-inline-start: 0px; list-style-type: none; }
 
 - AI for group sequential oncology design with multiple hypotheses
   - The 8th International Symposium on Biopharmaceutical Statistics, Madrid, Spain.
+- From Modeling and Simulation to Decision: Architecting Human--AI Collaboration for Trial Design
+  - R/Pharma Conference.
 
 ## 2025
 
